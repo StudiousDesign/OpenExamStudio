@@ -1,0 +1,180 @@
+{
+  "exam": {
+    "title": "Sample Exam with Various Question Types",
+    "description": "This exam includes multiple types of questions for demonstration purposes.",
+    "duration": 120,
+    "metadata": {
+      "createdBy": "Exam Author",
+      "dateCreated": "2024-09-07"
+    },
+    "sections": [
+      {
+        "title": "General Knowledge",
+        "questions": [
+          {
+            "id": 1,
+            "type": "multiple-choice",
+            "text": "What is the capital of France?",
+            "options": [
+              "Paris",
+              "London",
+              "Berlin",
+              "Rome"
+            ],
+            "correctAnswer": "Paris",
+            "points": 1
+          },
+          {
+            "id": 2,
+            "type": "essay",
+            "text": "Explain the causes of World War I.",
+            "wordLimit": 500,
+            "rubric": [
+              {
+                "criteria": "Clarity of Argument",
+                "points": 10
+              },
+              {
+                "criteria": "Historical Accuracy",
+                "points": 10
+              },
+              {
+                "criteria": "Use of Evidence",
+                "points": 10
+              }
+            ],
+            "points": 30
+          },
+          {
+            "id": 3,
+            "type": "fill-in-the-blank",
+            "text": "The capital of Spain is ___",
+            "acceptableAnswers": [
+              "Madrid",
+              "madrid"
+            ],
+            "points": 1
+          },
+          {
+            "id": 4,
+            "type": "matching",
+            "text": "Match the country with its capital.",
+            "pairs": [
+              {
+                "left": "France",
+                "right": "Paris"
+              },
+              {
+                "left": "Germany",
+                "right": "Berlin"
+              },
+              {
+                "left": "Italy",
+                "right": "Rome"
+              }
+            ],
+            "points": 3
+          },
+          {
+            "id": 5,
+            "type": "multiple-select",
+            "text": "Which of the following are prime numbers?",
+            "options": [
+              {
+                "text": "2",
+                "isCorrect": true
+              },
+              {
+                "text": "3",
+                "isCorrect": true
+              },
+              {
+                "text": "4",
+                "isCorrect": false
+              },
+              {
+                "text": "5",
+                "isCorrect": true
+              }
+            ],
+            "points": 3
+          },
+          {
+            "id": 6,
+            "type": "ordering",
+            "text": "Arrange the planets in our solar system from closest to furthest from the Sun.",
+            "items": [
+              "Mercury",
+              "Venus",
+              "Earth",
+              "Mars",
+              "Jupiter",
+              "Saturn",
+              "Uranus",
+              "Neptune"
+            ],
+            "correctOrder": [
+              "Mercury",
+              "Venus",
+              "Earth",
+              "Mars",
+              "Jupiter",
+              "Saturn",
+              "Uranus",
+              "Neptune"
+            ],
+            "points": 5
+          },
+          {
+            "id": 7,
+            "type": "hotspot",
+            "text": "Click on the heart in the diagram below.",
+            "image": "anatomy_diagram.jpg",
+            "correctAreas": [
+              {
+                "x": 120,
+                "y": 80,
+                "width": 50,
+                "height": 50
+              }
+            ],
+            "points": 2
+          },
+          {
+            "id": 8,
+            "type": "coding",
+            "text": "Write a function to check if a number is a palindrome.",
+            "language": "Python",
+            "starterCode": "def is_palindrome(n):\n    # Your code here",
+            "testCases": [
+              {
+                "input": "121",
+                "expectedOutput": "True"
+              },
+              {
+                "input": "123",
+                "expectedOutput": "False"
+              }
+            ],
+            "points": 10
+          },
+          {
+            "id": 9,
+            "type": "audio-response",
+            "text": "Record your answer explaining the process of photosynthesis.",
+            "durationLimit": 120,
+            "fileType": "audio",
+            "points": 5
+          }
+        ]
+      }
+    ],
+    "gradingSchema": {
+      "passingScore": 70
+    },
+    "settings": {
+      "shuffleQuestions": true,
+      "shuffleOptions": false
+    }
+  }
+}
