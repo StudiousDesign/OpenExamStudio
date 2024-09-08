@@ -7,6 +7,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace OpenExamStudio.Designer.Controls
 {
@@ -20,10 +21,11 @@ namespace OpenExamStudio.Designer.Controls
             questionMetadataControl1.SetMetadata(mcq.Title, mcq.Points);
             txtQuestionText.Text = mcq.Text;
 
-            AddAnswerOptionsToLayoutControl(mcq.AnswerOptions, mcq.AllowedSelections);
+            AddAnswerOptionsToLayoutControlDesignTime(mcq.AnswerOptions);
+            // AddAnswerOptionsToLayoutControl(mcq.AnswerOptions, mcq.AllowedSelections); only do this in the exam player
         }
 
-        public void AddAnswerOptionsToLayoutControl(List<string> answerOptions, int allowedSelections)
+        public void AddAnswerOptionsToLayoutControlExamTime(List<string> answerOptions, int allowedSelections)
         {
             Root.BeginUpdate(); // Begin updating to avoid multiple layout recalculations
 
@@ -53,6 +55,52 @@ namespace OpenExamStudio.Designer.Controls
             Root.EndUpdate(); // End updating and apply changes
         }
 
+        public void AddAnswerOptionsToLayoutControlDesignTime(List<string> options)
+        {
+            Root.BeginUpdate(); // Begin updating to avoid multiple layout recalculations
+
+            // List to store CheckEdit controls for easy management
+            List<TextEdit> answerOptions = new List<TextEdit>();
+
+            // Temporarily remove the EmptySpaceItem
+            Root.Remove(emptySpaceItem1);
+            Root.Remove(lciSaveButton);
+
+
+            foreach (var option in options)
+            {
+
+                // Create a new CheckEdit (checkbox) control
+                var textEdit = new TextEdit
+                {
+                    Text = option, // Set the answer text to the checkbox
+                    AutoSize = true, // Automatically size the checkbox to fit the text
+                    Margin = new Padding(0)
+                };
+
+                LayoutControlItem newItem = new LayoutControlItem
+                {
+                    Control = textEdit,
+                    TextVisible = false // No text label for the layout item
+                };
+
+
+
+                // Add the CheckEdit to the LayoutControl
+                Root.AddItem("", textEdit).TextVisible = false; // Add checkbox without label
+
+                // Store the checkbox in the list
+                answerOptions.Add(textEdit);
+            }
+
+            // Re-add the EmptySpaceItem after the new controls
+            Root.Add(emptySpaceItem1);
+            Root.Add(lciSaveButton);
+
+
+            Root.EndUpdate(); // End updating and apply changes
+        }
+
         // Event handler to enforce the selection limit
         private void OnCheckBoxChanged(List<CheckEdit> checkBoxes, int allowedSelections)
         {
@@ -67,6 +115,23 @@ namespace OpenExamStudio.Designer.Controls
                     checkBox.Enabled = selectedCount < allowedSelections;
                 }
             }
+        }
+
+        private void btnAddAnswerOption_Click(object sender, EventArgs e)
+        {
+            Root.BeginUpdate(); // Begin updating to avoid multiple layout recalculations
+                                // Temporarily remove the EmptySpaceItem
+            Root.Remove(emptySpaceItem1);
+            Root.Remove(lciSaveButton);
+
+            TextEdit option = new TextEdit();
+            // Add the CheckEdit to the LayoutControl
+            Root.AddItem("", option).TextVisible = false; // Add textEdit without label
+                                                          // Re-add the EmptySpaceItem after the new controls
+            Root.Add(emptySpaceItem1);
+            Root.Add(lciSaveButton);
+
+            Root.EndUpdate(); // End updating and apply changes
         }
     }
 }
