@@ -64,14 +64,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\MultipleChoiceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MultipleChoiceControl.Designer.cs">
+      <DependentUpon>MultipleChoiceControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QuestionMetadataControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\QuestionMetadataControl.Designer.cs">
+      <DependentUpon>QuestionMetadataControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataBindingExtension.cs" />
+    <Compile Include="entities\Area.cs" />
+    <Compile Include="entities\GradingSchema.cs" />
+    <Compile Include="entities\Exam.cs" />
     <Compile Include="MainView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
+    <Compile Include="entities\Option.cs" />
+    <Compile Include="entities\Pair.cs" />
+    <Compile Include="entities\questions\MultipleChoiceQuestion.cs" />
+    <Compile Include="entities\Metadata.cs" />
+    <Compile Include="NavBarLinkEventArgsExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="entities\Rubric.cs" />
+    <Compile Include="entities\Settings.cs" />
+    <Compile Include="entities\TestCase.cs" />
+    <Compile Include="entities\questions\Question.cs" />
+    <Compile Include="entities\Section.cs" />
+    <Compile Include="QuestionControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QuestionFactory.cs" />
+    <Compile Include="UIFactory.cs" />
+    <EmbeddedResource Include="Controls\MultipleChoiceControl.resx">
+      <DependentUpon>MultipleChoiceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\QuestionMetadataControl.resx">
+      <DependentUpon>QuestionMetadataControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +137,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
