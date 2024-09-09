@@ -4,7 +4,7 @@ namespace OpenExamStudio.Designer
 {
     public class Section
     {
-        public int Id { get; set; }
+        public int SectionId { get; set; }
         public string Title { get; set; }
         public List<dynamic> Questions { get; set; }
     }

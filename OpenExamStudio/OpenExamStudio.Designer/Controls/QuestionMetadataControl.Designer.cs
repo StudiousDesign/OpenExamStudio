@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
             this.txtQuestionName = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciQuestionName = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciQuestionPoints = new DevExpress.XtraLayout.LayoutControlItem();
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
@@ -41,6 +43,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciQuestionName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciQuestionPoints)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -66,6 +69,8 @@
             this.spinEdit1.Name = "spinEdit1";
             this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEdit1.Properties.IsFloatValue = false;
+            this.spinEdit1.Properties.MaskSettings.Set("mask", "N00");
             this.spinEdit1.Size = new System.Drawing.Size(386, 28);
             this.spinEdit1.StyleController = this.layoutControl1;
             this.spinEdit1.TabIndex = 5;
@@ -128,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciQuestionName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciQuestionPoints)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -140,5 +146,6 @@
         private DevExpress.XtraLayout.LayoutControlItem lciQuestionName;
         private DevExpress.XtraEditors.SpinEdit spinEdit1;
         private DevExpress.XtraLayout.LayoutControlItem lciQuestionPoints;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
     }
 }

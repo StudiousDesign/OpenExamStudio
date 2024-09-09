@@ -1,137 +1,180 @@
 ﻿using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraEditors.DXErrorProvider;
 using DevExpress.XtraLayout;
-using DevExpress.XtraPrinting.Export;
+using DevExpress.XtraLayout.Utils;
 using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using Padding = System.Windows.Forms.Padding;
+using TextEdit = DevExpress.XtraEditors.TextEdit;
 
 namespace OpenExamStudio.Designer.Controls
 {
-    public partial class MultipleChoiceControl : UserControl
+    public partial class MultipleChoiceControl : BaseExamQuestionControl
     {
-        public MultipleChoiceControl(dynamic questionData)
+        private MultipleChoiceQuestion _multipleChoiceQuestion;
+        private List<CheckEdit> checkBoxes = new List<CheckEdit>();
+        private List<TextEdit> answerOptions = new List<TextEdit>();
+
+        public MultipleChoiceControl(QuestionUIGenerationArgs args)
+            : base(args.SectionId, args.QuestionId)
         {
             InitializeComponent();
             Dock = DockStyle.Fill;
-            MultipleChoiceQuestion mcq = QuestionFactory.CreateQuestion(questionData);
-            questionMetadataControl1.SetMetadata(mcq.Title, mcq.Points);
-            txtQuestionText.Text = mcq.Text;
 
-            AddAnswerOptionsToLayoutControlDesignTime(mcq.AnswerOptions);
-            // AddAnswerOptionsToLayoutControl(mcq.AnswerOptions, mcq.AllowedSelections); only do this in the exam player
+            _multipleChoiceQuestion = (MultipleChoiceQuestion)QuestionFactory.CreateQuestion(args);
+            questionMetadataControl1.SetMetadata(_multipleChoiceQuestion.Title, _multipleChoiceQuestion.Points);
+            txtQuestionText.Text = _multipleChoiceQuestion.Text;
+            spinEditAllowedSelections.Value = _multipleChoiceQuestion.AllowedSelections;
+
+            CreateControls(_multipleChoiceQuestion.AnswerOptions, args.IsDesignTime);
+            // AddAnswerOptionsToLayout(_multipleChoiceQuestion.AnswerOptions, args.IsDesignTime, _multipleChoiceQuestion.AllowedSelections);
         }
 
-        public void AddAnswerOptionsToLayoutControlExamTime(List<string> answerOptions, int allowedSelections)
+        private void CreateControls(List<MultipleChoiceAnswerOption> questionAnswers, bool isDesignTime)
         {
-            Root.BeginUpdate(); // Begin updating to avoid multiple layout recalculations
+            Root.BeginUpdate();
+            RemoveTemporaryItems();
+            // Counter for currently selected checkboxes
+            int selectedCount = 0;
 
-            // List to store CheckEdit controls for easy management
-            List<CheckEdit> checkBoxes = new List<CheckEdit>();
-
-            foreach (var option in answerOptions)
+            foreach (var answer in questionAnswers)
             {
-                // Create a new CheckEdit (checkbox) control
+                // Create a new group for each answer
+                LayoutControlGroup answerGroup = new LayoutControlGroup
+                {
+                    GroupStyle = DevExpress.Utils.GroupStyle.Light,
+                    LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Table, // Set layout mode to table for horizontal alignment
+                    Padding = new DevExpress.XtraLayout.Utils.Padding(0), // Remove padding to avoid extra space
+                    Spacing = new DevExpress.XtraLayout.Utils.Padding(0), // Remove spacing to avoid extra space
+                };
+
+                // Configure table layout to have exactly two columns
+                var columnDefinition1 = new ColumnDefinition { SizeType = System.Windows.Forms.SizeType.AutoSize, Width = 0 }; // AutoSize for checkbox
+                var columnDefinition2 = new ColumnDefinition { SizeType = System.Windows.Forms.SizeType.Percent, Width = 100 }; // Remaining width for text
+
+                answerGroup.OptionsTableLayoutGroup.ColumnDefinitions.Clear(); // Clear any pre-existing columns
+                answerGroup.OptionsTableLayoutGroup.ColumnDefinitions.AddRange(new ColumnDefinition[] { columnDefinition1, columnDefinition2 });
+
+                LayoutControlItem lciCheckEdit = new LayoutControlItem
+                {
+                    TextVisible = false,
+                    Padding = new DevExpress.XtraLayout.Utils.Padding(0), // Remove padding for the checkbox item
+                    Spacing = new DevExpress.XtraLayout.Utils.Padding(0), // Remove spacing for the checkbox item
+                };
+
+                LayoutControlItem lciAnswerDisplay = new LayoutControlItem
+                {
+                    TextVisible = false,
+                    Padding = new DevExpress.XtraLayout.Utils.Padding(0), // Remove padding for the text item
+                    Spacing = new DevExpress.XtraLayout.Utils.Padding(0), // Remove spacing for the text item
+                };
+
+                // Create a checkbox
                 var checkBox = new CheckEdit
                 {
-                    Text = option, // Set the answer text to the checkbox
-                    AutoSize = true, // Automatically size the checkbox to fit the text
-                    Margin = new Padding(0)
+                    Text = string.Empty, // No label text
+                    AutoSize = true
+                };
+                checkBoxes.Add(checkBox);
+
+                lciCheckEdit.Control = checkBox;
+                lciCheckEdit.OptionsTableLayoutItem.ColumnIndex = 0; // Set the checkbox to the first column
+
+                // Handle the CheckedChanged event
+                checkBox.CheckedChanged += (sender, e) =>
+                {
+                    if (checkBox.Checked)
+                    {
+                        selectedCount++;
+                        if (selectedCount > spinEditAllowedSelections.Value)
+                        {
+                            checkBox.Checked = false; // Prevent checking if limit exceeded
+                        }
+                    }
+                    else
+                    {
+                        selectedCount--;
+                    }
                 };
 
-                // Add CheckedChanged event handler
-                checkBox.CheckedChanged += (sender, e) => OnCheckBoxChanged(checkBoxes, allowedSelections);
+                // Create either a TextEdit or LabelControl based on isDesignTime
+                if (isDesignTime)
+                {
+                    var textEdit = new TextEdit
+                    {
+                        Text = answer.DisplayText,
+                        Width = 200 // Adjust as needed
+                    };
+                    lciAnswerDisplay.Control = textEdit;
+                }
+                else
+                {
+                    var label = new LabelControl
+                    {
+                        Text = answer.DisplayText,
+                        AutoSizeMode = LabelAutoSizeMode.Default
+                    };
+                    lciAnswerDisplay.Control = label;
+                }
 
-                // Add the CheckEdit to the LayoutControl
-                Root.AddItem("", checkBox).TextVisible = false; // Add checkbox without label
+                lciAnswerDisplay.OptionsTableLayoutItem.ColumnIndex = 1; // Set the text edit or label to the second column
 
-                // Store the checkbox in the list
-                checkBoxes.Add(checkBox);
+                // Add items to the answer group
+                answerGroup.AddItem(lciCheckEdit);
+                answerGroup.AddItem(lciAnswerDisplay);
+
+                // Add the answer group to the root layout group
+                Root.AddItem(answerGroup);
             }
-
-            Root.EndUpdate(); // End updating and apply changes
+            ReAddTemporaryItems();
+            Root.EndUpdate();
         }
 
-        public void AddAnswerOptionsToLayoutControlDesignTime(List<string> options)
+        private void RemoveTemporaryItems()
         {
-            Root.BeginUpdate(); // Begin updating to avoid multiple layout recalculations
-
-            // List to store CheckEdit controls for easy management
-            List<TextEdit> answerOptions = new List<TextEdit>();
-
-            // Temporarily remove the EmptySpaceItem
             Root.Remove(emptySpaceItem1);
             Root.Remove(lciSaveButton);
+        }
 
-
-            foreach (var option in options)
-            {
-
-                // Create a new CheckEdit (checkbox) control
-                var textEdit = new TextEdit
-                {
-                    Text = option, // Set the answer text to the checkbox
-                    AutoSize = true, // Automatically size the checkbox to fit the text
-                    Margin = new Padding(0)
-                };
-
-                LayoutControlItem newItem = new LayoutControlItem
-                {
-                    Control = textEdit,
-                    TextVisible = false // No text label for the layout item
-                };
-
-
-
-                // Add the CheckEdit to the LayoutControl
-                Root.AddItem("", textEdit).TextVisible = false; // Add checkbox without label
-
-                // Store the checkbox in the list
-                answerOptions.Add(textEdit);
-            }
-
-            // Re-add the EmptySpaceItem after the new controls
+        private void ReAddTemporaryItems()
+        {
             Root.Add(emptySpaceItem1);
             Root.Add(lciSaveButton);
-
-
-            Root.EndUpdate(); // End updating and apply changes
         }
 
-        // Event handler to enforce the selection limit
-        private void OnCheckBoxChanged(List<CheckEdit> checkBoxes, int allowedSelections)
-        {
-            // Count the number of selected checkboxes
-            int selectedCount = checkBoxes.Count(cb => cb.Checked);
-
-            // If the selected count reaches the allowed number, disable remaining unchecked checkboxes
-            foreach (var checkBox in checkBoxes)
-            {
-                if (!checkBox.Checked)
-                {
-                    checkBox.Enabled = selectedCount < allowedSelections;
-                }
-            }
-        }
 
         private void btnAddAnswerOption_Click(object sender, EventArgs e)
         {
-            Root.BeginUpdate(); // Begin updating to avoid multiple layout recalculations
-                                // Temporarily remove the EmptySpaceItem
-            Root.Remove(emptySpaceItem1);
-            Root.Remove(lciSaveButton);
+            CreateControls(new List<MultipleChoiceAnswerOption>() { new MultipleChoiceAnswerOption() { DisplayText = "" } }, true);
+        }
 
-            TextEdit option = new TextEdit();
-            // Add the CheckEdit to the LayoutControl
-            Root.AddItem("", option).TextVisible = false; // Add textEdit without label
-                                                          // Re-add the EmptySpaceItem after the new controls
-            Root.Add(emptySpaceItem1);
-            Root.Add(lciSaveButton);
+        private void btnSaveQuestion_Click(object sender, EventArgs e)
+        {
+            MultipleChoiceQuestion question = new MultipleChoiceQuestion(base.SectionId, base.QuestionId, txtQuestionText.Text,
+                 questionMetadataControl1.Points,
+                _multipleChoiceQuestion.AnswerOptions,
+                _multipleChoiceQuestion.CorrectAnswer,
+                questionMetadataControl1.QuestionName,
+                (int)spinEditAllowedSelections.Value);
 
-            Root.EndUpdate(); // End updating and apply changes
+            base.RaiseOnSave(question);
+        }
+
+        private void spinEditAllowedSelections_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+            int checkedCount = checkBoxes.Count(c => c.Checked);
+
+            if (int.Parse(e.OldValue.ToString()) > int.Parse(e.NewValue.ToString()))
+            {
+                if (checkedCount > int.Parse(e.NewValue.ToString()))
+                {
+                    e.Cancel = true;
+                }
+            }
         }
     }
 }

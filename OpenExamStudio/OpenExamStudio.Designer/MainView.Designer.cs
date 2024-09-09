@@ -40,6 +40,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.pnlQuestion = new DevExpress.XtraEditors.PanelControl();
             this.spinEditExamDuration = new DevExpress.XtraEditors.SpinEdit();
             this.txtExamTitle = new DevExpress.XtraEditors.TextEdit();
             this.txtExamDescription = new DevExpress.XtraEditors.TextEdit();
@@ -50,6 +51,7 @@
             this.lciExamDescription = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciExamAuthor = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciExamDuration = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.noDocumentsView1 = new DevExpress.XtraBars.Docking2010.Views.NoDocuments.NoDocumentsView(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
@@ -65,12 +67,11 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.pnlQuestion = new DevExpress.XtraEditors.PanelControl();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlQuestion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditExamDuration.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExamTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExamDescription.Properties)).BeginInit();
@@ -81,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lciExamDescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciExamAuthor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciExamDuration)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.noDocumentsView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -92,8 +94,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.galleryDropDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlQuestion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -191,6 +191,13 @@
             this.layoutControl1.Size = new System.Drawing.Size(1475, 1007);
             this.layoutControl1.TabIndex = 7;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // pnlQuestion
+            // 
+            this.pnlQuestion.Location = new System.Drawing.Point(16, 103);
+            this.pnlQuestion.Name = "pnlQuestion";
+            this.pnlQuestion.Size = new System.Drawing.Size(1443, 888);
+            this.pnlQuestion.TabIndex = 8;
             // 
             // spinEditExamDuration
             // 
@@ -301,6 +308,17 @@
             this.lciExamDuration.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.lciExamDuration.Text = "Exam Duration:";
             this.lciExamDuration.TextSize = new System.Drawing.Size(86, 13);
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.pnlQuestion;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 87);
+            this.layoutControlItem1.MinSize = new System.Drawing.Size(7, 7);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(1449, 894);
+            this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
             // 
             // dockManager1
             // 
@@ -418,22 +436,6 @@
             this.layoutControlGroup1.Size = new System.Drawing.Size(180, 120);
             this.layoutControlGroup1.TextVisible = false;
             // 
-            // pnlQuestion
-            // 
-            this.pnlQuestion.Location = new System.Drawing.Point(16, 103);
-            this.pnlQuestion.Name = "pnlQuestion";
-            this.pnlQuestion.Size = new System.Drawing.Size(1443, 888);
-            this.pnlQuestion.TabIndex = 8;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.pnlQuestion;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 87);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1449, 894);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
-            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -453,6 +455,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnlQuestion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditExamDuration.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExamTitle.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExamDescription.Properties)).EndInit();
@@ -463,6 +466,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lciExamDescription)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciExamAuthor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciExamDuration)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.noDocumentsView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
@@ -474,8 +478,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.galleryDropDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlQuestion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

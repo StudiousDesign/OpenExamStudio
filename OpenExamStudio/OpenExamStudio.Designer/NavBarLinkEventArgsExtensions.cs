@@ -5,13 +5,18 @@ namespace OpenExamStudio.Designer
 {
     public static class NavBarLinkEventArgsExtensions
     {
-        public static dynamic GetDynamicQuestion(this NavBarLinkEventArgs e, Exam exam)
+        public static dynamic QuestionUIGenerationArgs(this NavBarLinkEventArgs e, Exam exam)
         {
             string[] nameParts = e.Link.ItemName.Split('|');
-            int sectionId = int.Parse(nameParts[0]) -1;
-            int questionId = int.Parse(nameParts[1]) -1;
+            int sectionId = int.Parse(nameParts[0]);
+            int questionId = int.Parse(nameParts[1]);
 
-            return exam.Sections[sectionId].Questions[questionId];
+            QuestionUIGenerationArgs args = new QuestionUIGenerationArgs();
+            args.SectionId = sectionId;
+            args.QuestionId = questionId;
+            args.Question = exam.Sections[sectionId - 1].Questions[questionId - 1];
+            args.IsDesignTime = true;
+            return args;
         }
     }
 }

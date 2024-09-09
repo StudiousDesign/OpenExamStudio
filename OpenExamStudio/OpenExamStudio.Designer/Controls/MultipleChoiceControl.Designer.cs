@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnSaveQuestion = new DevExpress.XtraEditors.SimpleButton();
             this.spinEditAllowedSelections = new DevExpress.XtraEditors.SpinEdit();
@@ -42,6 +43,7 @@
             this.lciAllowedSelections = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciSaveButton = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditAllowedSelections.Properties)).BeginInit();
@@ -54,6 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lciAllowedSelections)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciSaveButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -79,6 +82,7 @@
             this.btnSaveQuestion.StyleController = this.layoutControl1;
             this.btnSaveQuestion.TabIndex = 8;
             this.btnSaveQuestion.Text = "&Save";
+            this.btnSaveQuestion.Click += new System.EventHandler(this.btnSaveQuestion_Click);
             // 
             // spinEditAllowedSelections
             // 
@@ -87,17 +91,30 @@
             0,
             0,
             0});
-            this.spinEditAllowedSelections.Location = new System.Drawing.Point(120, 194);
+            this.spinEditAllowedSelections.Location = new System.Drawing.Point(120, 214);
             this.spinEditAllowedSelections.Name = "spinEditAllowedSelections";
             this.spinEditAllowedSelections.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEditAllowedSelections.Properties.IsFloatValue = false;
+            this.spinEditAllowedSelections.Properties.MaskSettings.Set("mask", "N00");
+            this.spinEditAllowedSelections.Properties.MaxValue = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.spinEditAllowedSelections.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.spinEditAllowedSelections.Size = new System.Drawing.Size(1052, 28);
             this.spinEditAllowedSelections.StyleController = this.layoutControl1;
             this.spinEditAllowedSelections.TabIndex = 7;
+            this.spinEditAllowedSelections.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.spinEditAllowedSelections_EditValueChanging);
             // 
             // btnAddAnswerOption
             // 
-            this.btnAddAnswerOption.Location = new System.Drawing.Point(1178, 194);
+            this.btnAddAnswerOption.Location = new System.Drawing.Point(1178, 214);
             this.btnAddAnswerOption.Name = "btnAddAnswerOption";
             this.btnAddAnswerOption.Size = new System.Drawing.Size(124, 28);
             this.btnAddAnswerOption.StyleController = this.layoutControl1;
@@ -107,7 +124,7 @@
             // 
             // txtQuestionText
             // 
-            this.txtQuestionText.Location = new System.Drawing.Point(16, 102);
+            this.txtQuestionText.Location = new System.Drawing.Point(16, 122);
             this.txtQuestionText.Name = "txtQuestionText";
             this.txtQuestionText.Size = new System.Drawing.Size(1286, 86);
             this.txtQuestionText.StyleController = this.layoutControl1;
@@ -117,8 +134,11 @@
             // 
             this.questionMetadataControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.questionMetadataControl1.Location = new System.Drawing.Point(16, 16);
+            this.questionMetadataControl1.MyProperty = null;
             this.questionMetadataControl1.Name = "questionMetadataControl1";
-            this.questionMetadataControl1.Size = new System.Drawing.Size(1286, 61);
+            this.questionMetadataControl1.Points = 0;
+            this.questionMetadataControl1.QuestionName = "";
+            this.questionMetadataControl1.Size = new System.Drawing.Size(1286, 81);
             this.questionMetadataControl1.TabIndex = 4;
             // 
             // Root
@@ -141,8 +161,11 @@
             // 
             this.lciQuestionMetadata.Control = this.questionMetadataControl1;
             this.lciQuestionMetadata.Location = new System.Drawing.Point(0, 0);
+            this.lciQuestionMetadata.MaxSize = new System.Drawing.Size(0, 87);
+            this.lciQuestionMetadata.MinSize = new System.Drawing.Size(106, 87);
             this.lciQuestionMetadata.Name = "lciQuestionMetadata";
-            this.lciQuestionMetadata.Size = new System.Drawing.Size(1292, 67);
+            this.lciQuestionMetadata.Size = new System.Drawing.Size(1292, 87);
+            this.lciQuestionMetadata.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.lciQuestionMetadata.Text = "Question Metadata:";
             this.lciQuestionMetadata.TextSize = new System.Drawing.Size(0, 0);
             this.lciQuestionMetadata.TextVisible = false;
@@ -150,15 +173,15 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 212);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 232);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(1292, 616);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(1292, 596);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // lciQuestionText
             // 
             this.lciQuestionText.Control = this.txtQuestionText;
-            this.lciQuestionText.Location = new System.Drawing.Point(0, 67);
+            this.lciQuestionText.Location = new System.Drawing.Point(0, 87);
             this.lciQuestionText.MaxSize = new System.Drawing.Size(0, 111);
             this.lciQuestionText.MinSize = new System.Drawing.Size(94, 111);
             this.lciQuestionText.Name = "lciQuestionText";
@@ -171,7 +194,7 @@
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.btnAddAnswerOption;
-            this.layoutControlItem1.Location = new System.Drawing.Point(1162, 178);
+            this.layoutControlItem1.Location = new System.Drawing.Point(1162, 198);
             this.layoutControlItem1.MaxSize = new System.Drawing.Size(130, 34);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(130, 34);
             this.layoutControlItem1.Name = "layoutControlItem1";
@@ -184,7 +207,7 @@
             // lciAllowedSelections
             // 
             this.lciAllowedSelections.Control = this.spinEditAllowedSelections;
-            this.lciAllowedSelections.Location = new System.Drawing.Point(0, 178);
+            this.lciAllowedSelections.Location = new System.Drawing.Point(0, 198);
             this.lciAllowedSelections.Name = "lciAllowedSelections";
             this.lciAllowedSelections.Size = new System.Drawing.Size(1162, 34);
             this.lciAllowedSelections.Text = "Allowed Selections";
@@ -231,6 +254,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lciAllowedSelections)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciSaveButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -251,5 +275,6 @@
         private DevExpress.XtraEditors.SimpleButton btnSaveQuestion;
         private DevExpress.XtraLayout.LayoutControlItem lciSaveButton;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
     }
 }

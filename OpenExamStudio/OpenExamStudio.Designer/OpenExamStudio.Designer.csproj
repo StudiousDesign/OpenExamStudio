@@ -64,6 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\BaseExamQuestionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\MultipleChoiceControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,6 +93,7 @@
     <Compile Include="entities\Pair.cs" />
     <Compile Include="entities\questions\MultipleChoiceQuestion.cs" />
     <Compile Include="entities\Metadata.cs" />
+    <Compile Include="MultipleChoiceAnswerOption.cs" />
     <Compile Include="NavBarLinkEventArgsExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +106,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="QuestionFactory.cs" />
+    <Compile Include="QuestionUIGenerationArgs.cs" />
     <Compile Include="UIFactory.cs" />
     <EmbeddedResource Include="Controls\MultipleChoiceControl.resx">
       <DependentUpon>MultipleChoiceControl.cs</DependentUpon>
