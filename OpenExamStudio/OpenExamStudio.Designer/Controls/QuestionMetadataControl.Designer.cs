@@ -51,7 +51,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1443, 60);
+            this.layoutControl1.Size = new System.Drawing.Size(1000, 60);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -62,11 +62,11 @@
             0,
             0,
             0});
-            this.spinEdit1.Location = new System.Drawing.Point(819, 16);
+            this.spinEdit1.Location = new System.Drawing.Point(598, 16);
             this.spinEdit1.Name = "spinEdit1";
             this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinEdit1.Size = new System.Drawing.Size(608, 28);
+            this.spinEdit1.Size = new System.Drawing.Size(386, 28);
             this.spinEdit1.StyleController = this.layoutControl1;
             this.spinEdit1.TabIndex = 5;
             // 
@@ -74,7 +74,7 @@
             // 
             this.txtQuestionName.Location = new System.Drawing.Point(111, 16);
             this.txtQuestionName.Name = "txtQuestionName";
-            this.txtQuestionName.Size = new System.Drawing.Size(607, 28);
+            this.txtQuestionName.Size = new System.Drawing.Size(386, 28);
             this.txtQuestionName.StyleController = this.layoutControl1;
             this.txtQuestionName.TabIndex = 4;
             // 
@@ -86,7 +86,7 @@
             this.lciQuestionName,
             this.lciQuestionPoints});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1443, 60);
+            this.Root.Size = new System.Drawing.Size(1000, 60);
             this.Root.TextVisible = false;
             // 
             // lciQuestionName
@@ -96,7 +96,7 @@
             this.lciQuestionName.MaxSize = new System.Drawing.Size(0, 34);
             this.lciQuestionName.MinSize = new System.Drawing.Size(151, 34);
             this.lciQuestionName.Name = "lciQuestionName";
-            this.lciQuestionName.Size = new System.Drawing.Size(708, 34);
+            this.lciQuestionName.Size = new System.Drawing.Size(487, 34);
             this.lciQuestionName.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.lciQuestionName.Text = "Question Name:";
             this.lciQuestionName.TextSize = new System.Drawing.Size(79, 13);
@@ -104,11 +104,11 @@
             // lciQuestionPoints
             // 
             this.lciQuestionPoints.Control = this.spinEdit1;
-            this.lciQuestionPoints.Location = new System.Drawing.Point(708, 0);
+            this.lciQuestionPoints.Location = new System.Drawing.Point(487, 0);
             this.lciQuestionPoints.MaxSize = new System.Drawing.Size(0, 34);
             this.lciQuestionPoints.MinSize = new System.Drawing.Size(166, 34);
             this.lciQuestionPoints.Name = "lciQuestionPoints";
-            this.lciQuestionPoints.Size = new System.Drawing.Size(709, 34);
+            this.lciQuestionPoints.Size = new System.Drawing.Size(487, 34);
             this.lciQuestionPoints.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.lciQuestionPoints.Text = "Question Points:";
             this.lciQuestionPoints.TextSize = new System.Drawing.Size(79, 13);
@@ -120,7 +120,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.layoutControl1);
             this.Name = "QuestionMetadataControl";
-            this.Size = new System.Drawing.Size(1443, 60);
+            this.Size = new System.Drawing.Size(1000, 60);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
