@@ -18,21 +18,25 @@
             {
               "answerId": 1,
               "displayText": "Paris",
+              "explanation": "Correct; paris is the capital of France.",
               "isCorrect": true
             },
             {
               "answerId": 2,
               "displayText": "London",
+              "explanation": "Incorrect; London is the captial of Enagland not France.",
               "isCorrect": false
             },
             {
               "answerId": 3,
               "displayText": "Berlin",
+              "explanation": "Incorrect; Berlin is the captial of Germany not France.",
               "isCorrect": false
             },
             {
               "answerId": 4,
               "displayText": "Rome",
+              "explanation": "Incorrect; Rome is the captial of Italy not France.",
               "isCorrect": false
             }
           ],

@@ -13,11 +13,17 @@ using System.Windows.Forms;
 using OpenExamStudio.Designer.Controls;
 using System;
 using Newtonsoft.Json.Serialization;
+using System.Drawing;
+using DevExpress.LookAndFeel;
+using DevExpress.Skins;
+using DevExpress.XtraNavBar.ViewInfo;
 
 namespace OpenExamStudio.Designer
 {
     public partial class MainView : XtraForm
     {
+        private Color _navBaseColour;
+        private NavBarItem _lastSelectedItem;
         private string _examPath;
         private Exam _examData;
         public MainView()
@@ -73,6 +79,8 @@ namespace OpenExamStudio.Designer
 
         private void navBarControl1_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
+            pnlQuestion.Controls.Clear();
+            StyleNavLink(e.Link);
             QuestionUIGenerationArgs questionUIGenerationArgs = e.QuestionUIGenerationArgs(_examData);
             BaseExamQuestionControl control = UIFactory.GetQuestionControl(questionUIGenerationArgs);
             control.OnSave += Question_onSave;
@@ -105,6 +113,8 @@ namespace OpenExamStudio.Designer
             }
         }
 
+
+
         private void ReloadExam()
         {
             _examData = JsonConvert.DeserializeObject<Exam>(File.ReadAllText(_examPath));
@@ -116,6 +126,54 @@ namespace OpenExamStudio.Designer
             spinEditExamDuration.Bind(_examData, "Duration");
 
             AddToNavigation(_examData.Sections);
+        }
+
+        private void StyleNavLink(NavBarItemLink link)
+        {
+            navBarControl1.BeginUpdate();
+
+            if (_navBaseColour == null)
+                _navBaseColour = navBarControl1.Items.First().Appearance.ForeColor;
+
+            navBarControl1.Items.ForEach(item => { item.Appearance.ForeColor = _navBaseColour; });
+
+            // Reset the font weight of the last selected item, if any
+            if (_lastSelectedItem != null)
+            {
+                _lastSelectedItem.Appearance.Font = new Font(navBarControl1.Font, FontStyle.Regular);
+            }
+
+            // Set the font weight of the current selected item
+            if (link != null)
+            {
+                _lastSelectedItem = link.Item;
+                _lastSelectedItem.Appearance.Font = new Font(navBarControl1.Font, FontStyle.Bold);
+            }
+
+            // Reset the font color of the last selected item, if any
+            if (_lastSelectedItem != null)
+            {
+                _lastSelectedItem.Appearance.ForeColor = Color.Empty; // Reset to default color
+            }
+
+            // Get the current skin's accent color
+            Color accentColor = GetSkinAccentColor();
+
+            // Set the font color of the current selected item to the skin's accent color
+            if (link != null)
+            {
+                _lastSelectedItem = link.Item;
+                _lastSelectedItem.Appearance.ForeColor = accentColor;
+            }
+
+            navBarControl1.EndUpdate();
+
+        }
+        private Color GetSkinAccentColor()
+        {
+            // Retrieve the current active skin's color palette
+            var skin = CommonSkins.GetSkin(UserLookAndFeel.Default);
+            return skin.Colors["Primary"]; // "Highlight" is often used for the accent color in DevExpress skins
         }
     }
 }

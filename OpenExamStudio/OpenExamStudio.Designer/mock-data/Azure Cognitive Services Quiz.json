@@ -1,0 +1,176 @@
+{
+  "title": "Azure Cognitive Services Quiz",
+  "description": "This quiz tests your knowledge on Azure Cognitive Services.",
+  "author": null,
+  "duration": 120,
+  "metadata": {
+    "createdBy": "Robert M Tonnessen",
+    "dateCreated": "2024-09-09T00:00:00"
+  },
+  "sections": [
+    {
+      "sectionId": 1,
+      "title": "Azure Cognitive Services",
+      "questions": [
+        {
+          "allowedSelections": 1,
+          "answerOptions": [
+            {
+              "answerId": 1,
+              "displayText": "Computer Vision, Speech, Language, Decision, Web Search",
+              "explanation": "Correct; these are the five categories of Azure Cognitive Services.",
+              "isCorrect": true
+            },
+            {
+              "answerId": 2,
+              "displayText": "Machine Learning, AI, Data Factory, Virtual Machines, Databases",
+              "explanation": "Incorrect; these are not the correct categories of Azure Cognitive Services.",
+              "isCorrect": false
+            },
+            {
+              "answerId": 3,
+              "displayText": "Vision, Text Analytics, Sentiment Analysis, Language, Translator",
+              "explanation": "Incorrect; while some of these are Azure Cognitive Services, the categories are not correct.",
+              "isCorrect": false
+            }
+          ],
+          "correctAnswer": "Computer Vision, Speech, Language, Decision, Web Search",
+          "sectionId": 1,
+          "questionId": 1,
+          "title": "Azure Cognitive Services Categories",
+          "text": "Which of the following are the five main categories of Azure Cognitive Services?",
+          "type": "multiple-choice",
+          "points": 3
+        },
+        {
+          "allowedSelections": 1,
+          "answerOptions": [
+            {
+              "answerId": 1,
+              "displayText": "Face API",
+              "explanation": "Correct; Face API is used for face detection and recognition.",
+              "isCorrect": true
+            },
+            {
+              "answerId": 2,
+              "displayText": "Custom Vision",
+              "explanation": "Incorrect; Custom Vision is used for training custom image classification models.",
+              "isCorrect": false
+            },
+            {
+              "answerId": 3,
+              "displayText": "Text Analytics",
+              "explanation": "Incorrect; Text Analytics is used for extracting insights from text.",
+              "isCorrect": false
+            }
+          ],
+          "correctAnswer": "Face API",
+          "sectionId": 1,
+          "questionId": 2,
+          "title": "Service for Face Detection",
+          "text": "Which Azure Cognitive Service is used specifically for face detection and recognition?",
+          "type": "multiple-choice",
+          "points": 3
+        },
+        {
+          "allowedSelections": 1,
+          "answerOptions": [
+            {
+              "answerId": 1,
+              "displayText": "To convert spoken audio to text",
+              "explanation": "Correct; Speech-to-Text converts spoken audio to text.",
+              "isCorrect": true
+            },
+            {
+              "answerId": 2,
+              "displayText": "To translate text from one language to another",
+              "explanation": "Incorrect; that is the purpose of the Translator service.",
+              "isCorrect": false
+            },
+            {
+              "answerId": 3,
+              "displayText": "To provide chatbot functionalities",
+              "explanation": "Incorrect; chatbot functionalities are provided by the Language service.",
+              "isCorrect": false
+            }
+          ],
+          "correctAnswer": "To convert spoken audio to text",
+          "sectionId": 1,
+          "questionId": 3,
+          "title": "Purpose of Speech-to-Text Service",
+          "text": "What is the primary purpose of the Azure Speech-to-Text service?",
+          "type": "multiple-choice",
+          "points": 3
+        },
+        {
+          "allowedSelections": 1,
+          "answerOptions": [
+            {
+              "answerId": 1,
+              "displayText": "Key Phrases Extraction",
+              "explanation": "Correct; this is a feature of Text Analytics.",
+              "isCorrect": true
+            },
+            {
+              "answerId": 2,
+              "displayText": "Machine Translation",
+              "explanation": "Incorrect; this is not a feature of Text Analytics.",
+              "isCorrect": false
+            },
+            {
+              "answerId": 3,
+              "displayText": "Custom Model Training",
+              "explanation": "Incorrect; this is a feature of Custom Vision.",
+              "isCorrect": false
+            }
+          ],
+          "correctAnswer": "Key Phrases Extraction",
+          "sectionId": 1,
+          "questionId": 4,
+          "title": "Features of Text Analytics",
+          "text": "Which of the following is a feature of Azure Text Analytics?",
+          "type": "multiple-choice",
+          "points": 3
+        },
+        {
+          "allowedSelections": 1,
+          "answerOptions": [
+            {
+              "answerId": 1,
+              "displayText": "Custom Vision Service",
+              "explanation": "Correct; Custom Vision allows training of custom image classifiers.",
+              "isCorrect": true
+            },
+            {
+              "answerId": 2,
+              "displayText": "Computer Vision API",
+              "explanation": "Incorrect; Computer Vision API provides pre-built image analysis capabilities.",
+              "isCorrect": false
+            },
+            {
+              "answerId": 3,
+              "displayText": "Text Analytics API",
+              "explanation": "Incorrect; Text Analytics API is used for text data analysis.",
+              "isCorrect": false
+            }
+          ],
+          "correctAnswer": "Custom Vision Service",
+          "sectionId": 1,
+          "questionId": 5,
+          "title": "Custom Image Classifier",
+          "text": "Which Azure Cognitive Service allows you to train a custom image classifier?",
+          "type": "multiple-choice",
+          "points": 3
+        }
+      ]
+    }
+  ],
+  "gradingSchema": {
+    "passingScore": 70
+  },
+  "settings": {
+    "shuffleQuestions": true,
+    "shuffleOptions": false
+  }
+}
+```

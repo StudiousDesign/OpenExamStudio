@@ -1,5 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.DXErrorProvider;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid;
 using DevExpress.XtraLayout;
 using DevExpress.XtraLayout.Utils;
 using System;
@@ -10,14 +12,15 @@ using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using Padding = System.Windows.Forms.Padding;
 using TextEdit = DevExpress.XtraEditors.TextEdit;
+using System.ComponentModel;
 
 namespace OpenExamStudio.Designer.Controls
 {
     public partial class MultipleChoiceControl : BaseExamQuestionControl
     {
         private MultipleChoiceQuestion _multipleChoiceQuestion;
-        private List<CheckEdit> checkBoxes = new List<CheckEdit>();
-        private List<TextEdit> answerOptions = new List<TextEdit>();
+        //private List<CheckEdit> checkBoxes = new List<CheckEdit>();
+        //private List<TextEdit> answerOptions = new List<TextEdit>();
 
         public MultipleChoiceControl(QuestionUIGenerationArgs args)
             : base(args.SectionId, args.QuestionId)
@@ -30,126 +33,134 @@ namespace OpenExamStudio.Designer.Controls
             txtQuestionText.Text = _multipleChoiceQuestion.Text;
             spinEditAllowedSelections.Value = _multipleChoiceQuestion.AllowedSelections;
 
-            CreateControls(_multipleChoiceQuestion.AnswerOptions, args.IsDesignTime);
+            //_answerOptions = new BindingList<MultipleChoiceAnswerOption>(_multipleChoiceQuestion.AnswerOptions);
+            gridControlAnswers.DataSource = _multipleChoiceQuestion.AnswerOptions;
+
+            // CreateControls(_multipleChoiceQuestion.AnswerOptions, args.IsDesignTime);
             // AddAnswerOptionsToLayout(_multipleChoiceQuestion.AnswerOptions, args.IsDesignTime, _multipleChoiceQuestion.AllowedSelections);
         }
 
-        private void CreateControls(List<MultipleChoiceAnswerOption> questionAnswers, bool isDesignTime)
-        {
-            Root.BeginUpdate();
-            RemoveTemporaryItems();
-            // Counter for currently selected checkboxes
-            int selectedCount = 0;
+        //private void CreateControls(List<MultipleChoiceAnswerOption> questionAnswers, bool isDesignTime)
+        //{
+        //    Root.BeginUpdate();
+        //    RemoveTemporaryItems();
+        //    // Counter for currently selected checkboxes
+        //    int selectedCount = 0;
 
-            foreach (var answer in questionAnswers)
-            {
-                // Create a new group for each answer
-                LayoutControlGroup answerGroup = new LayoutControlGroup
-                {
-                    GroupStyle = DevExpress.Utils.GroupStyle.Light,
-                    LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Table, // Set layout mode to table for horizontal alignment
-                    Padding = new DevExpress.XtraLayout.Utils.Padding(0), // Remove padding to avoid extra space
-                    Spacing = new DevExpress.XtraLayout.Utils.Padding(0), // Remove spacing to avoid extra space
-                };
+        //    foreach (var answer in questionAnswers)
+        //    {
+        //        // Create a new group for each answer
+        //        LayoutControlGroup answerGroup = new LayoutControlGroup
+        //        {
+        //            GroupStyle = DevExpress.Utils.GroupStyle.Light,
+        //            LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Table, // Set layout mode to table for horizontal alignment
+        //            Padding = new DevExpress.XtraLayout.Utils.Padding(0), // Remove padding to avoid extra space
+        //            Spacing = new DevExpress.XtraLayout.Utils.Padding(0), // Remove spacing to avoid extra space
+        //        };
 
-                // Configure table layout to have exactly two columns
-                var columnDefinition1 = new ColumnDefinition { SizeType = System.Windows.Forms.SizeType.AutoSize, Width = 0 }; // AutoSize for checkbox
-                var columnDefinition2 = new ColumnDefinition { SizeType = System.Windows.Forms.SizeType.Percent, Width = 100 }; // Remaining width for text
+        //        // Configure table layout to have exactly two columns
+        //        var columnDefinition1 = new ColumnDefinition { SizeType = System.Windows.Forms.SizeType.AutoSize, Width = 0 }; // AutoSize for checkbox
+        //        var columnDefinition2 = new ColumnDefinition { SizeType = System.Windows.Forms.SizeType.Percent, Width = 100 }; // Remaining width for text
 
-                answerGroup.OptionsTableLayoutGroup.ColumnDefinitions.Clear(); // Clear any pre-existing columns
-                answerGroup.OptionsTableLayoutGroup.ColumnDefinitions.AddRange(new ColumnDefinition[] { columnDefinition1, columnDefinition2 });
+        //        answerGroup.OptionsTableLayoutGroup.ColumnDefinitions.Clear(); // Clear any pre-existing columns
+        //        answerGroup.OptionsTableLayoutGroup.ColumnDefinitions.AddRange(new ColumnDefinition[] { columnDefinition1, columnDefinition2 });
 
-                LayoutControlItem lciCheckEdit = new LayoutControlItem
-                {
-                    TextVisible = false,
-                    Padding = new DevExpress.XtraLayout.Utils.Padding(0), // Remove padding for the checkbox item
-                    Spacing = new DevExpress.XtraLayout.Utils.Padding(0), // Remove spacing for the checkbox item
-                };
+        //        LayoutControlItem lciCheckEdit = new LayoutControlItem
+        //        {
+        //            TextVisible = false,
+        //            Padding = new DevExpress.XtraLayout.Utils.Padding(0), // Remove padding for the checkbox item
+        //            Spacing = new DevExpress.XtraLayout.Utils.Padding(0), // Remove spacing for the checkbox item
+        //        };
 
-                LayoutControlItem lciAnswerDisplay = new LayoutControlItem
-                {
-                    TextVisible = false,
-                    Padding = new DevExpress.XtraLayout.Utils.Padding(0), // Remove padding for the text item
-                    Spacing = new DevExpress.XtraLayout.Utils.Padding(0), // Remove spacing for the text item
-                };
+        //        LayoutControlItem lciAnswerDisplay = new LayoutControlItem
+        //        {
+        //            TextVisible = false,
+        //            Padding = new DevExpress.XtraLayout.Utils.Padding(0), // Remove padding for the text item
+        //            Spacing = new DevExpress.XtraLayout.Utils.Padding(0), // Remove spacing for the text item
+        //        };
 
-                // Create a checkbox
-                var checkBox = new CheckEdit
-                {
-                    Text = string.Empty, // No label text
-                    AutoSize = true
-                };
-                checkBoxes.Add(checkBox);
+        //        // Create a checkbox
+        //        var checkBox = new CheckEdit
+        //        {
+        //            Text = string.Empty, // No label text
+        //            AutoSize = true
+        //        };
+        //        checkBoxes.Add(checkBox);
 
-                lciCheckEdit.Control = checkBox;
-                lciCheckEdit.OptionsTableLayoutItem.ColumnIndex = 0; // Set the checkbox to the first column
+        //        lciCheckEdit.Control = checkBox;
+        //        lciCheckEdit.OptionsTableLayoutItem.ColumnIndex = 0; // Set the checkbox to the first column
 
-                // Handle the CheckedChanged event
-                checkBox.CheckedChanged += (sender, e) =>
-                {
-                    if (checkBox.Checked)
-                    {
-                        selectedCount++;
-                        if (selectedCount > spinEditAllowedSelections.Value)
-                        {
-                            checkBox.Checked = false; // Prevent checking if limit exceeded
-                        }
-                    }
-                    else
-                    {
-                        selectedCount--;
-                    }
-                };
+        //        // Handle the CheckedChanged event
+        //        checkBox.CheckedChanged += (sender, e) =>
+        //        {
+        //            if (checkBox.Checked)
+        //            {
+        //                selectedCount++;
+        //                if (selectedCount > spinEditAllowedSelections.Value)
+        //                {
+        //                    checkBox.Checked = false; // Prevent checking if limit exceeded
+        //                }
+        //            }
+        //            else
+        //            {
+        //                selectedCount--;
+        //            }
+        //        };
 
-                // Create either a TextEdit or LabelControl based on isDesignTime
-                if (isDesignTime)
-                {
-                    var textEdit = new TextEdit
-                    {
-                        Text = answer.DisplayText,
-                        Width = 200 // Adjust as needed
-                    };
-                    lciAnswerDisplay.Control = textEdit;
-                }
-                else
-                {
-                    var label = new LabelControl
-                    {
-                        Text = answer.DisplayText,
-                        AutoSizeMode = LabelAutoSizeMode.Default
-                    };
-                    lciAnswerDisplay.Control = label;
-                }
+        //        // Create either a TextEdit or LabelControl based on isDesignTime
+        //        if (isDesignTime)
+        //        {
+        //            var textEdit = new TextEdit
+        //            {
+        //                Text = answer.DisplayText,
+        //                Width = 200 // Adjust as needed
+        //            };
+        //            lciAnswerDisplay.Control = textEdit;
+        //        }
+        //        else
+        //        {
+        //            var label = new LabelControl
+        //            {
+        //                Text = answer.DisplayText,
+        //                AutoSizeMode = LabelAutoSizeMode.Default
+        //            };
+        //            lciAnswerDisplay.Control = label;
+        //        }
 
-                lciAnswerDisplay.OptionsTableLayoutItem.ColumnIndex = 1; // Set the text edit or label to the second column
+        //        lciAnswerDisplay.OptionsTableLayoutItem.ColumnIndex = 1; // Set the text edit or label to the second column
 
-                // Add items to the answer group
-                answerGroup.AddItem(lciCheckEdit);
-                answerGroup.AddItem(lciAnswerDisplay);
+        //        // Add items to the answer group
+        //        answerGroup.AddItem(lciCheckEdit);
+        //        answerGroup.AddItem(lciAnswerDisplay);
 
-                // Add the answer group to the root layout group
-                Root.AddItem(answerGroup);
-            }
-            ReAddTemporaryItems();
-            Root.EndUpdate();
-        }
+        //        // Add the answer group to the root layout group
+        //        Root.AddItem(answerGroup);
+        //    }
+        //    ReAddTemporaryItems();
+        //    Root.EndUpdate();
+        //}
 
         private void RemoveTemporaryItems()
         {
-            Root.Remove(emptySpaceItem1);
+            // Root.Remove(emptySpaceItem1);
             Root.Remove(lciSaveButton);
         }
 
         private void ReAddTemporaryItems()
         {
-            Root.Add(emptySpaceItem1);
+            // Root.Add(emptySpaceItem1);
             Root.Add(lciSaveButton);
         }
 
 
         private void btnAddAnswerOption_Click(object sender, EventArgs e)
         {
-            CreateControls(new List<MultipleChoiceAnswerOption>() { new MultipleChoiceAnswerOption() { DisplayText = "" } }, true);
+            gridControlAnswers.BeginUpdate();
+            _multipleChoiceQuestion.AnswerOptions.Add(new MultipleChoiceAnswerOption() { AnswerId = _multipleChoiceQuestion.AnswerOptions.Count + 1 });
+            gridControlAnswers.DataSource = _multipleChoiceQuestion.AnswerOptions;
+            gridControlAnswers.EndUpdate();
+
+            //  CreateControls(new List<MultipleChoiceAnswerOption>() { new MultipleChoiceAnswerOption() { DisplayText = "" } }, true);
         }
 
         private void btnSaveQuestion_Click(object sender, EventArgs e)
@@ -166,7 +177,7 @@ namespace OpenExamStudio.Designer.Controls
 
         private void spinEditAllowedSelections_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
-            int checkedCount = checkBoxes.Count(c => c.Checked);
+            int checkedCount = _multipleChoiceQuestion.AnswerOptions.Count(a => a.IsCorrect);
 
             if (int.Parse(e.OldValue.ToString()) > int.Parse(e.NewValue.ToString()))
             {
@@ -175,6 +186,36 @@ namespace OpenExamStudio.Designer.Controls
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void DeleteRow_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            gridControlAnswers.BeginUpdate();
+            // Get the selected row handle
+            int rowHandle = gridView1.FocusedRowHandle;
+
+            // Check if the row handle is valid
+            if (rowHandle >= 0)
+            {
+                // Remove the row
+                gridView1.DeleteRow(rowHandle);
+            }
+            gridControlAnswers.EndUpdate();
+
+        }
+
+        private void repositoryItemCheckEdit1_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+            int checkedCount = _multipleChoiceQuestion.AnswerOptions.Count(a => a.IsCorrect);
+            
+            if ((bool)e.NewValue == true)
+            {
+                if (checkedCount >= spinEditAllowedSelections.Value)
+                {
+                    e.Cancel = true;
+                }
+            }        
+
         }
     }
 }
