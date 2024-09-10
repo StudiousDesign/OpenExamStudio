@@ -34,6 +34,7 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             this.btnLoadExam = new DevExpress.XtraBars.BarButtonItem();
+            this.btnGenerateExam = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -67,6 +68,7 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.btnSaveAs = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -107,9 +109,11 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.skinPaletteDropDownButtonItem1,
-            this.btnLoadExam});
+            this.btnLoadExam,
+            this.btnGenerateExam,
+            this.btnSaveAs});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 8;
+            this.barManager1.MaxItemId = 10;
             // 
             // bar2
             // 
@@ -119,7 +123,9 @@
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.skinPaletteDropDownButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnLoadExam)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnLoadExam),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSaveAs),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnGenerateExam)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -134,7 +140,14 @@
             this.btnLoadExam.Caption = "&Load Exam";
             this.btnLoadExam.Id = 7;
             this.btnLoadExam.Name = "btnLoadExam";
-            this.btnLoadExam.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLoadExam_ItemClick);
+            this.btnLoadExam.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.OnLoadButtonClicked);
+            // 
+            // btnGenerateExam
+            // 
+            this.btnGenerateExam.Caption = "&Generate Exam";
+            this.btnGenerateExam.Id = 8;
+            this.btnGenerateExam.Name = "btnGenerateExam";
+            this.btnGenerateExam.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGenerateExam_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -436,6 +449,13 @@
             this.layoutControlGroup1.Size = new System.Drawing.Size(180, 120);
             this.layoutControlGroup1.TextVisible = false;
             // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.Caption = "&Save As";
+            this.btnSaveAs.Id = 9;
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSaveAs_ItemClick);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -522,5 +542,7 @@
         private DevExpress.XtraLayout.LayoutControlGroup lciExamMetadata;
         private DevExpress.XtraEditors.PanelControl pnlQuestion;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraBars.BarButtonItem btnGenerateExam;
+        private DevExpress.XtraBars.BarButtonItem btnSaveAs;
     }
 }

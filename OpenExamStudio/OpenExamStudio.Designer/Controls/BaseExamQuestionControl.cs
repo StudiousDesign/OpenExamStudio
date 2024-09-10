@@ -8,11 +8,11 @@ namespace OpenExamStudio.Designer.Controls
         public int SectionId { get; }
         public int QuestionId { get; }
 
-        public event EventHandler<dynamic> OnSave;
+        public event EventHandler<dynamic> OnSaveQuestion;
 
         public void RaiseOnSave(dynamic question)
         {
-            if (OnSave != null) OnSave(this, question);
+            if (OnSaveQuestion != null) OnSaveQuestion(this, question);
         }
 
         public BaseExamQuestionControl()

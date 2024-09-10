@@ -1,13 +1,14 @@
-﻿using OpenExamStudio.Designer.Controls;
+﻿using DevExpress.XtraNavBar;
+using OpenExamStudio.Designer.Controls;
 using System;
-using System.Windows.Forms;
 
 namespace OpenExamStudio.Designer
 {
     public static class UIFactory
     {
-        public static BaseExamQuestionControl GetQuestionControl(QuestionUIGenerationArgs args)
+        public static BaseExamQuestionControl GetQuestionControl(NavBarLinkEventArgs e, Exam examData)
         {
+            var args = e.QuestionUIGenerationArgs(examData);
             string type = args.Question.type;
             switch (type)
             {

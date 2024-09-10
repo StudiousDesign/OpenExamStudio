@@ -18,26 +18,26 @@
             {
               "answerId": 1,
               "displayText": "Azure Virtual Machines",
-              "explanation": "Correct; Azure Virtual Machines provide scalable compute resources.",
-              "isCorrect": true
+              "isCorrect": true,
+              "explanation": "Correct; Azure Virtual Machines provide scalable compute resources."
             },
             {
               "answerId": 2,
               "displayText": "Azure Functions",
-              "explanation": "Correct; Azure Functions is a serverless compute service.",
-              "isCorrect": true
+              "isCorrect": true,
+              "explanation": "Correct; Azure Functions is a serverless compute service."
             },
             {
               "answerId": 3,
               "displayText": "Azure Storage",
-              "explanation": "Incorrect; Azure Storage is used for storing data, not compute.",
-              "isCorrect": false
+              "isCorrect": false,
+              "explanation": "Incorrect; Azure Storage is used for storing data, not compute."
             },
             {
               "answerId": 4,
               "displayText": "Azure Content Delivery Network (CDN)",
-              "explanation": "Incorrect; Azure CDN is for content distribution, not compute.",
-              "isCorrect": false
+              "isCorrect": false,
+              "explanation": "Incorrect; Azure CDN is for content distribution, not compute."
             }
           ],
           "correctAnswer": "Azure Virtual Machines, Azure Functions",

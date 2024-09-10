@@ -79,10 +79,14 @@
     <Compile Include="Controls\QuestionMetadataControl.Designer.cs">
       <DependentUpon>QuestionMetadataControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataBindingExtension.cs" />
+    <Compile Include="helpers\FileHelper.cs" />
+    <Compile Include="helpers\DataBindingExtension.cs" />
     <Compile Include="entities\Area.cs" />
     <Compile Include="entities\GradingSchema.cs" />
     <Compile Include="entities\Exam.cs" />
+    <Compile Include="AIElements\ExamElement.cs" />
+    <Compile Include="AIElements\IExamElementGenerator.cs" />
+    <Compile Include="helpers\EnvironmentVariableProvider.cs" />
     <Compile Include="MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,8 +97,13 @@
     <Compile Include="entities\Pair.cs" />
     <Compile Include="entities\questions\MultipleChoiceQuestion.cs" />
     <Compile Include="entities\Metadata.cs" />
+    <Compile Include="AIElements\ManualTransferElementGenerator.cs" />
     <Compile Include="MultipleChoiceAnswerOption.cs" />
-    <Compile Include="NavBarLinkEventArgsExtensions.cs" />
+    <Compile Include="helpers\NavBarLinkEventArgsExtensions.cs" />
+    <Compile Include="AIElements\OpenAIExamElementGenerator.cs" />
+    <Compile Include="helpers\NavLinkStyler.cs" />
+    <Compile Include="helpers\PersistenceManager.cs" />
+    <Compile Include="helpers\NavigationBarService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="entities\Rubric.cs" />
