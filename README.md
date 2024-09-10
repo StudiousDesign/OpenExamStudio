@@ -11,3 +11,10 @@ Key features include:
 - **Real-Time Analytics:** Gain insights into performance and learning trends.
 
 Open Exam Studio is designed for anyone passionate about education—from individual teachers to entire institutions—providing a robust, flexible, and free solution to modernize assessment practices.
+
+Here are some early development screen captures.
+
+Designer :-
+![image](https://github.com/user-attachments/assets/2b0c9cac-bc36-48a4-a8ae-6519ccd0a86c)
+
+Runner :-
