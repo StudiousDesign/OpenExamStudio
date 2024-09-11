@@ -34,6 +34,7 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             this.btnLoadExam = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSaveAs = new DevExpress.XtraBars.BarButtonItem();
             this.btnGenerateExam = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -68,7 +69,9 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.btnSaveAs = new DevExpress.XtraBars.BarButtonItem();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bbiGenQuestion = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiGenSection = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -96,6 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.galleryDropDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -111,9 +115,11 @@
             this.skinPaletteDropDownButtonItem1,
             this.btnLoadExam,
             this.btnGenerateExam,
-            this.btnSaveAs});
+            this.btnSaveAs,
+            this.bbiGenQuestion,
+            this.bbiGenSection});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 10;
+            this.barManager1.MaxItemId = 12;
             // 
             // bar2
             // 
@@ -141,6 +147,13 @@
             this.btnLoadExam.Id = 7;
             this.btnLoadExam.Name = "btnLoadExam";
             this.btnLoadExam.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.OnLoadButtonClicked);
+            // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.Caption = "&Save As";
+            this.btnSaveAs.Id = 9;
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSaveAs_ItemClick);
             // 
             // btnGenerateExam
             // 
@@ -407,6 +420,7 @@
             this.navBarControl1.Size = new System.Drawing.Size(236, 966);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkClicked);
+            this.navBarControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.navBarControl1_MouseUp);
             // 
             // dockPanelToolbox
             // 
@@ -449,12 +463,27 @@
             this.layoutControlGroup1.Size = new System.Drawing.Size(180, 120);
             this.layoutControlGroup1.TextVisible = false;
             // 
-            // btnSaveAs
+            // popupMenu1
             // 
-            this.btnSaveAs.Caption = "&Save As";
-            this.btnSaveAs.Id = 9;
-            this.btnSaveAs.Name = "btnSaveAs";
-            this.btnSaveAs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSaveAs_ItemClick);
+            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiGenQuestion),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiGenSection)});
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
+            // 
+            // bbiGenQuestion
+            // 
+            this.bbiGenQuestion.Caption = "&Generate new question";
+            this.bbiGenQuestion.Id = 10;
+            this.bbiGenQuestion.Name = "bbiGenQuestion";
+            this.bbiGenQuestion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PopupMenuItemClicked);
+            // 
+            // bbiGenSection
+            // 
+            this.bbiGenSection.Caption = "Generate new section";
+            this.bbiGenSection.Id = 11;
+            this.bbiGenSection.Name = "bbiGenSection";
+            this.bbiGenSection.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PopupMenuItemClicked);
             // 
             // MainView
             // 
@@ -498,6 +527,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.galleryDropDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -544,5 +574,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraBars.BarButtonItem btnGenerateExam;
         private DevExpress.XtraBars.BarButtonItem btnSaveAs;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.BarButtonItem bbiGenQuestion;
+        private DevExpress.XtraBars.BarButtonItem bbiGenSection;
     }
 }

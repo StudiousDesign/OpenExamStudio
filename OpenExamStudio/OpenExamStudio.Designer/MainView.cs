@@ -1,9 +1,12 @@
-﻿using DevExpress.XtraBars;
+﻿using DevExpress.Utils.Menu;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraLayout.Utils;
 using DevExpress.XtraNavBar;
 using Newtonsoft.Json;
 using OpenExamStudio.Designer.Controls;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenExamStudio.Designer
 {
@@ -73,6 +76,34 @@ namespace OpenExamStudio.Designer
             var result = await generator.GenerateExamAsync();
             Exam exam = JsonConvert.DeserializeObject<Exam>(result);
             _fileHelper.SaveGeneratedExam(exam);
+        }
+
+        private void navBarControl1_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            // Check if the right mouse button is clicked
+            if (e.Button == MouseButtons.Right)
+            {
+                // Get the NavBarGroup under the mouse cursor
+                NavBarHitInfo hitInfo = navBarControl1.CalcHitInfo(e.Location);
+                if (hitInfo.InGroupCaption)
+                {
+                    _currentSelctedSection = hitInfo.Group.Caption;
+                    popupMenu1.ShowPopup(Control.MousePosition);
+                }
+            }
+        }
+
+        private string _currentSelctedSection = "";
+
+        private async void PopupMenuItemClicked(object sender, ItemClickEventArgs e)
+        {
+            if (e.Item.Equals(bbiGenQuestion))
+            {
+                var generator = _examElementGeneratorFactory.GetExamElementGenerator();
+                var result = await generator.GenerateExamQuestionAsync(_currentExam.Title, _currentExam.Sections.First(s => s.Title == _currentSelctedSection));
+                dynamic question = JsonConvert.DeserializeObject<dynamic>(result);
+                OnSaveQuestion(this, question);
+            }
         }
     }
 }

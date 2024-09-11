@@ -125,7 +125,7 @@ namespace OpenExamStudio.Designer
     },
     ""type"": {
       ""type"": ""string"",
-      ""enum"": [""multiple-choice"", ""short-essay"", ""audio-clip""]
+      ""enum"": [""multiple-choice""]
     },
     ""points"": {
       ""type"": ""number""
