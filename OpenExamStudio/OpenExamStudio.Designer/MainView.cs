@@ -2,12 +2,14 @@
 using DevExpress.XtraEditors;
 using DevExpress.XtraLayout.Utils;
 using DevExpress.XtraNavBar;
+using Newtonsoft.Json;
 using OpenExamStudio.Designer.Controls;
 
 namespace OpenExamStudio.Designer
 {
     public partial class MainView : XtraForm
     {
+        private ExamElementGeneratorFactory _examElementGeneratorFactory;
         private NavigationBarService _navigationBarService;
         private FileHelper _fileHelper;
         private PersistenceManager _persistenceManager;
@@ -16,6 +18,7 @@ namespace OpenExamStudio.Designer
         public MainView()
         {
             InitializeComponent();
+            _examElementGeneratorFactory = new ExamElementGeneratorFactory();
             _persistenceManager = new PersistenceManager(this, behaviorManager1);
             _navigationBarService = new NavigationBarService(navBarControl1);
             _fileHelper = new FileHelper(this);
@@ -46,6 +49,13 @@ namespace OpenExamStudio.Designer
             _fileHelper.Save(question);
         }
 
+        private void ClearUI()
+        {
+            pnlQuestion.Controls.Clear();
+            _navigationBarService.Clear();
+            lciExamMetadata.Visibility = LayoutVisibility.Never;
+        }
+
         private void OnActiveExamChanged(object sender, Exam exam)
         {
             _currentExam = exam;
@@ -56,9 +66,13 @@ namespace OpenExamStudio.Designer
             spinEditExamDuration.Bind(exam, "Duration");
             _navigationBarService.RebuildNavigation(exam);
         }
-        private void btnGenerateExam_ItemClick(object sender, ItemClickEventArgs e)
+        private async void btnGenerateExam_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            ClearUI();
+            var generator = _examElementGeneratorFactory.GetExamElementGenerator();
+            var result = await generator.GenerateExamAsync();
+            Exam exam = JsonConvert.DeserializeObject<Exam>(result);
+            _fileHelper.SaveGeneratedExam(exam);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraNavBar;
+using OpenAI_API.Completions;
 using OpenExamStudio.Designer.Controls;
 using System;
 
@@ -14,7 +15,6 @@ namespace OpenExamStudio.Designer
             {
                 case "multiple-choice":
                     return new MultipleChoiceControl(args);
-                // Handle other cases similarly...
                 default:
                     throw new InvalidOperationException($"Unknown question type: {type}");
             }

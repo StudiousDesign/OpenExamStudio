@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using DevExpress.XtraEditors;
+using System.Windows.Forms;
 
 namespace OpenExamStudio.Designer
 {

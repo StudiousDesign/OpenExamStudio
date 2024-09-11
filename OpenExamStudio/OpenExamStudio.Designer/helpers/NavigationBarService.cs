@@ -1,4 +1,6 @@
 ﻿using DevExpress.XtraNavBar;
+using System;
+using static System.Collections.Specialized.BitVector32;
 
 namespace OpenExamStudio.Designer
 {
@@ -38,9 +40,15 @@ namespace OpenExamStudio.Designer
             }
         }
 
+
         public void StyleNavLink(NavBarItemLink link)
         {
             _navLinkStyler.StyleNavLink(link);
+        }
+
+        internal void Clear()
+        {
+            _navBar.Groups.Clear();
         }
     }
 }

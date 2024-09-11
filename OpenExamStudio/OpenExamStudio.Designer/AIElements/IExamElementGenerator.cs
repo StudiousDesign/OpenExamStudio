@@ -1,7 +1,10 @@
-﻿namespace OpenExamStudio.Designer
+﻿using System.Threading.Tasks;
+
+namespace OpenExamStudio.Designer
 {
     public interface IExamElementGenerator
     {
-        string GenerateExamElement(ExamElement element);
+        Task<string> GenerateExamAsync();
+        Task<string> GenerateExamQuestionAsync(string examTitle, Section contextSection);
     }
 }

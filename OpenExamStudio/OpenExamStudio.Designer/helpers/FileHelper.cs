@@ -61,12 +61,13 @@ namespace OpenExamStudio.Designer
             }
         }
 
-        public void SaveAs()
+        public void SaveAs(string filename = "")
         {
             using (XtraSaveFileDialog dlg = new XtraSaveFileDialog
             {
                 Filter = "JSON files (*.json)|*.json",
-                DefaultExt = "json"
+                DefaultExt = "json",
+                FileName = !string.IsNullOrWhiteSpace(filename) ? filename : string.Empty,
             })
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
@@ -75,6 +76,12 @@ namespace OpenExamStudio.Designer
                     SaveToFile(_path);
                 }
             }
+        }
+
+        public void SaveGeneratedExam(Exam exam)
+        {
+            _examData = exam;
+            SaveAs(_examData.Title);
         }
 
         private void SaveToFile(string path)
