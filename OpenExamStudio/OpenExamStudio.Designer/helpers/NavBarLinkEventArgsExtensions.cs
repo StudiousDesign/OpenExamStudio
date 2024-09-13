@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraNavBar;
+using System;
 using System.Linq;
 
 namespace OpenExamStudio.Designer
@@ -18,5 +19,6 @@ namespace OpenExamStudio.Designer
             args.IsDesignTime = true;
             return args;
         }
+
     }
 }

@@ -187,13 +187,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
-    <Content Include="mock-data\mock-exam.json">
+    <Content Include="mock-data\general-azure-quiz.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="mock-data\Azure Cognitive Services Quiz.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="mock-data\General Azure Quiz.json">
+    <Content Include="mock-data\mock-example-exam.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />

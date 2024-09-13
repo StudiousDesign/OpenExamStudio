@@ -10,7 +10,7 @@ namespace OpenExamStudio.Designer
         public static BaseExamQuestionControl GetQuestionControl(NavBarLinkEventArgs e, Exam examData)
         {
             var args = e.QuestionUIGenerationArgs(examData);
-            string type = args.Question.type;
+            string type = args.Question.Type;
             switch (type)
             {
                 case "multiple-choice":

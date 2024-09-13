@@ -13,6 +13,13 @@
       "title": "Azure Compute",
       "questions": [
         {
+          "sectionId": 1,
+          "questionId": 1,
+          "correctAnswer": "Azure Virtual Machines, Azure Functions",
+          "title": "Azure Compute Services",
+          "text": "Which of the following are Azure compute services?",
+          "type": "multiple-choice",
+          "points": 4,
           "allowedSelections": 2,
           "answerOptions": [
             {
@@ -39,16 +46,16 @@
               "isCorrect": false,
               "explanation": "Incorrect; Azure CDN is for content distribution, not compute."
             }
-          ],
-          "correctAnswer": "Azure Virtual Machines, Azure Functions",
-          "sectionId": 1,
-          "questionId": 1,
-          "title": "Azure Compute Services",
-          "text": "Which of the following are Azure compute services?",
-          "type": "multiple-choice",
-          "points": 4
+          ]
         },
         {
+          "sectionId": 1,
+          "questionId": 2,
+          "correctAnswer": "Virtual Machine Scale Sets",
+          "title": "Azure VM Management",
+          "text": "Which Azure service is designed for managing a group of load-balanced virtual machines?",
+          "type": "multiple-choice",
+          "points": 3,
           "allowedSelections": 1,
           "answerOptions": [
             {
@@ -69,14 +76,7 @@
               "explanation": "Incorrect; Azure Blob Storage is a service for storing large amounts of unstructured data.",
               "isCorrect": false
             }
-          ],
-          "correctAnswer": "Virtual Machine Scale Sets",
-          "sectionId": 1,
-          "questionId": 2,
-          "title": "Azure VM Management",
-          "text": "Which Azure service is designed for managing a group of load-balanced virtual machines?",
-          "type": "multiple-choice",
-          "points": 3
+          ]
         }
       ]
     },
@@ -85,6 +85,13 @@
       "title": "Azure Storage",
       "questions": [
         {
+          "sectionId": 2,
+          "questionId": 1,
+          "correctAnswer": "Azure Blob Storage, Azure Table Storage",
+          "title": "Azure Storage Types",
+          "text": "Which of the following are types of Azure Storage services?",
+          "type": "multiple-choice",
+          "points": 4,
           "allowedSelections": 2,
           "answerOptions": [
             {
@@ -111,16 +118,16 @@
               "explanation": "Incorrect; AKS is used for deploying and managing containerized applications.",
               "isCorrect": false
             }
-          ],
-          "correctAnswer": "Azure Blob Storage, Azure Table Storage",
-          "sectionId": 2,
-          "questionId": 1,
-          "title": "Azure Storage Types",
-          "text": "Which of the following are types of Azure Storage services?",
-          "type": "multiple-choice",
-          "points": 4
+          ]
         },
         {
+          "sectionId": 2,
+          "questionId": 2,
+          "correctAnswer": "Hot, Cool, Archive",
+          "title": "Azure Blob Storage Access Tiers",
+          "text": "What are the three access tiers available in Azure Blob Storage?",
+          "type": "multiple-choice",
+          "points": 3,
           "allowedSelections": 1,
           "answerOptions": [
             {
@@ -141,14 +148,7 @@
               "explanation": "Incorrect; these terms refer to cloud deployment models.",
               "isCorrect": false
             }
-          ],
-          "correctAnswer": "Hot, Cool, Archive",
-          "sectionId": 2,
-          "questionId": 2,
-          "title": "Azure Blob Storage Access Tiers",
-          "text": "What are the three access tiers available in Azure Blob Storage?",
-          "type": "multiple-choice",
-          "points": 3
+          ]
         }
       ]
     },
@@ -157,6 +157,13 @@
       "title": "Azure Networking",
       "questions": [
         {
+          "sectionId": 3,
+          "questionId": 1,
+          "correctAnswer": "Virtual Network (VNet), Network Security Groups (NSG)",
+          "title": "Azure Networking Components",
+          "text": "Which of the following are components used for Azure network security and segmentation?",
+          "type": "multiple-choice",
+          "points": 4,
           "allowedSelections": 2,
           "answerOptions": [
             {
@@ -183,16 +190,16 @@
               "explanation": "Incorrect; Logic Apps are for workflow automation, not networking.",
               "isCorrect": false
             }
-          ],
-          "correctAnswer": "Virtual Network (VNet), Network Security Groups (NSG)",
-          "sectionId": 3,
-          "questionId": 1,
-          "title": "Azure Networking Components",
-          "text": "Which of the following are components used for Azure network security and segmentation?",
-          "type": "multiple-choice",
-          "points": 4
+          ]
         },
         {
+          "sectionId": 3,
+          "questionId": 2,
+          "correctAnswer": "Azure Load Balancer",
+          "title": "Azure Load Balancing",
+          "text": "Which Azure service is used to distribute incoming network traffic across multiple virtual machines?",
+          "type": "multiple-choice",
+          "points": 3,
           "allowedSelections": 1,
           "answerOptions": [
             {
@@ -213,14 +220,7 @@
               "explanation": "Incorrect; Azure Firewall provides centralized network security policy enforcement.",
               "isCorrect": false
             }
-          ],
-          "correctAnswer": "Azure Load Balancer",
-          "sectionId": 3,
-          "questionId": 2,
-          "title": "Azure Load Balancing",
-          "text": "Which Azure service is used to distribute incoming network traffic across multiple virtual machines?",
-          "type": "multiple-choice",
-          "points": 3
+          ]
         }
       ]
     }

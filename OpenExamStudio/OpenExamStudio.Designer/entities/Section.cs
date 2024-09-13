@@ -6,6 +6,6 @@ namespace OpenExamStudio.Designer
     {
         public int SectionId { get; set; }
         public string Title { get; set; }
-        public List<dynamic> Questions { get; set; }
+        public List<Question> Questions { get; set; }
     }
 }

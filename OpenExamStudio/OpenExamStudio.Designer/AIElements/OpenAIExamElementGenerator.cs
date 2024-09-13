@@ -10,6 +10,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using System.Security.Policy;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace OpenExamStudio.Designer
 {
@@ -69,80 +70,68 @@ namespace OpenExamStudio.Designer
 
         private string GetQuestionPrompt(string examTitle, Section contextSection)
         {
-            string completePrompt = $"strictly using the follwoing json schema portion that represents a question in my exam simulator {_questionPromptSchema}{Environment.NewLine}{Environment.NewLine} generate me a new question that would compliment the existing questions in the following exam section. {JsonConvert.SerializeObject(contextSection)}; the exam is called {examTitle}";
+            string completePrompt = $"generate me a new question that would compliment the existing questions in the following exam section. {SectionToString(examTitle, contextSection)}.  You must only respond in the following format {_questionPromptSchema}{Environment.NewLine}{Environment.NewLine} do not add any new properties.  the QuestionId property should be one greater than {contextSection.Questions.Count} and the type property should always be 'multiple-choice'";
             return completePrompt;
+        }
+
+        private string SectionToString(string examTitle, Section section)
+        {
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Exam Title:{examTitle}");
+            sb.AppendLine($"Section Title:{section.Title}");
+            sb.AppendLine("Exisiting question titles are;");
+            foreach (Question question in section.Questions)
+            {
+                sb.AppendLine(question.Title);
+            }
+            return sb.ToString();
         }
 
         private string GetFullExamPrompt(int sectionCount, int questionsPerSection)
         {
-            string completePrompt = $"strictly using the follwoing json schema; {Environment.NewLine}{Environment.NewLine}{_fullExamPromptSchema} generate me a {sectionCount} section quiz on any topic you like. each section should have {questionsPerSection} questions in it and at least one of those questions in each section should be multipart and therfore have at least allowedSelections greater than 1..";
+            string completePrompt = $"strictly using the follwoing json as an example of the required result structure; {Environment.NewLine}{Environment.NewLine}{_fullExamPromptSchema} generate me a {sectionCount} section quiz on any topic you like. each section should have {questionsPerSection} questions in it and at least one of those questions in each section should be multipart and therfore have at least allowedSelections greater than 1..";
             return completePrompt;
         }
 
 
         #region schema
         private string _questionPromptSchema = @"{
-  ""type"": ""object"",
-  ""properties"": {
-    ""allowedSelections"": {
-      ""type"": ""number""
-    },
-    ""answerOptions"": {
-      ""type"": ""array"",
-      ""items"": {
-        ""type"": ""object"",
-        ""properties"": {
-          ""answerId"": {
-            ""type"": ""number""
-          },
-          ""displayText"": {
-            ""type"": ""string""
-          },
-          ""explanation"": {
-            ""type"": ""string""
-          },
-          ""isCorrect"": {
-            ""type"": ""boolean""
-          }
-        },
-        ""required"": [""answerId"", ""displayText"", ""explanation"", ""isCorrect""]
-      }
-    },
-    ""correctAnswer"": {
-      ""type"": ""string""
-    },
-    ""sectionId"": {
-      ""type"": ""number""
-    },
-    ""questionId"": {
-      ""type"": ""number""
-    },
-    ""title"": {
-      ""type"": ""string""
-    },
-    ""text"": {
-      ""type"": ""string""
-    },
-    ""type"": {
-      ""type"": ""string"",
-      ""enum"": [""multiple-choice""]
-    },
-    ""points"": {
-      ""type"": ""number""
-    }
-  },
-  ""required"": [
-    ""allowedSelections"",
-    ""answerOptions"",
-    ""correctAnswer"",
-    ""sectionId"",
-    ""questionId"",
-    ""title"",
-    ""text"",
-    ""type"",
-    ""points""
-  ]
-}
+          ""allowedSelections"": 2,
+          ""answerOptions"": [
+            {
+              ""answerId"": 1,
+              ""displayText"": ""Azure Virtual Machines"",
+              ""isCorrect"": true,
+              ""explanation"": ""Correct; Azure Virtual Machines provide scalable compute resources.""
+            },
+            {
+              ""answerId"": 2,
+              ""displayText"": ""Azure Functions"",
+              ""isCorrect"": true,
+              ""explanation"": ""Correct; Azure Functions is a serverless compute service.""
+            },
+            {
+              ""answerId"": 3,
+              ""displayText"": ""Azure Storage"",
+              ""isCorrect"": false,
+              ""explanation"": ""Incorrect; Azure Storage is used for storing data, not compute.""
+            },
+            {
+              ""answerId"": 4,
+              ""displayText"": ""Azure Content Delivery Network (CDN)"",
+              ""isCorrect"": false,
+              ""explanation"": ""Incorrect; Azure CDN is for content distribution, not compute.""
+            }
+          ],
+          ""correctAnswer"": ""Azure Virtual Machines, Azure Functions"",
+          ""sectionId"": 1,
+          ""questionId"": 1,
+          ""title"": ""Azure Compute Services UPDATED"",
+          ""text"": ""Which of the following are Azure compute services?"",
+          ""type"": ""multiple-choice"",
+          ""points"": 4
+        }}
 ";
 
         private string _fullExamPromptSchema = @"{

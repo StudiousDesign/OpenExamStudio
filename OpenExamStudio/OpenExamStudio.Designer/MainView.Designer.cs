@@ -40,6 +40,9 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.bbiGenQuestion = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiGenSection = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDeleteQuestion = new DevExpress.XtraBars.BarButtonItem();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.pnlQuestion = new DevExpress.XtraEditors.PanelControl();
@@ -70,8 +73,6 @@
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.bbiGenQuestion = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiGenSection = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -117,9 +118,10 @@
             this.btnGenerateExam,
             this.btnSaveAs,
             this.bbiGenQuestion,
-            this.bbiGenSection});
+            this.bbiGenSection,
+            this.bbiDeleteQuestion});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 12;
+            this.barManager1.MaxItemId = 13;
             // 
             // bar2
             // 
@@ -193,6 +195,27 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1918, 39);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 1007);
+            // 
+            // bbiGenQuestion
+            // 
+            this.bbiGenQuestion.Caption = "&Generate new question";
+            this.bbiGenQuestion.Id = 10;
+            this.bbiGenQuestion.Name = "bbiGenQuestion";
+            this.bbiGenQuestion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PopupMenuItemClicked);
+            // 
+            // bbiGenSection
+            // 
+            this.bbiGenSection.Caption = "Generate new section";
+            this.bbiGenSection.Id = 11;
+            this.bbiGenSection.Name = "bbiGenSection";
+            this.bbiGenSection.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PopupMenuItemClicked);
+            // 
+            // bbiDeleteQuestion
+            // 
+            this.bbiDeleteQuestion.Caption = "Delete question";
+            this.bbiDeleteQuestion.Id = 12;
+            this.bbiDeleteQuestion.Name = "bbiDeleteQuestion";
+            this.bbiDeleteQuestion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PopupMenuItemClicked);
             // 
             // documentManager1
             // 
@@ -467,23 +490,10 @@
             // 
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiGenQuestion),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiGenSection)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiGenSection),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDeleteQuestion)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
-            // 
-            // bbiGenQuestion
-            // 
-            this.bbiGenQuestion.Caption = "&Generate new question";
-            this.bbiGenQuestion.Id = 10;
-            this.bbiGenQuestion.Name = "bbiGenQuestion";
-            this.bbiGenQuestion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PopupMenuItemClicked);
-            // 
-            // bbiGenSection
-            // 
-            this.bbiGenSection.Caption = "Generate new section";
-            this.bbiGenSection.Id = 11;
-            this.bbiGenSection.Name = "bbiGenSection";
-            this.bbiGenSection.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PopupMenuItemClicked);
             // 
             // MainView
             // 
@@ -577,5 +587,6 @@
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.BarButtonItem bbiGenQuestion;
         private DevExpress.XtraBars.BarButtonItem bbiGenSection;
+        private DevExpress.XtraBars.BarButtonItem bbiDeleteQuestion;
     }
 }
