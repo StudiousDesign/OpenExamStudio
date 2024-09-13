@@ -26,11 +26,11 @@ namespace OpenExamStudio.Designer
                 group.Caption = section.Title;
                 group.Expanded = true;
 
-                foreach (dynamic question in section.Questions)
+                foreach (Question question in section.Questions)
                 {
                     NavBarItem item = new NavBarItem();
-                    item.Caption = $"{question.questionId} - {question.type}";
-                    item.Name = $"{section.SectionId}|{question.questionId}";
+                    item.Caption = $"{question.QuestionId} - {question.Type}";
+                    item.Name = $"{section.SectionId}|{question.QuestionId}";
 
                     _navBar.Items.Add(item);
                     group.ItemLinks.Add(item);

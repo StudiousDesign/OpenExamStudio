@@ -47,7 +47,7 @@ namespace OpenExamStudio.Designer
             _fileHelper.SaveAs();
         }
 
-        private void OnSaveQuestion(object sender, dynamic question)
+        private void OnSaveQuestion(object sender, Question question)
         {
             _fileHelper.Save(question);
         }
@@ -90,19 +90,29 @@ namespace OpenExamStudio.Designer
                     _currentSelctedSection = hitInfo.Group.Caption;
                     popupMenu1.ShowPopup(Control.MousePosition);
                 }
+                else if (hitInfo.InLink)
+                {
+                    _currentSelctedSection = hitInfo.Link.Caption;
+                    _selectedLinkInfo = hitInfo.Link.ItemName;
+                    popupMenu1.ShowPopup(Control.MousePosition);
+                }
             }
         }
 
         private string _currentSelctedSection = "";
-
+        private string _selectedLinkInfo = "";
         private async void PopupMenuItemClicked(object sender, ItemClickEventArgs e)
         {
             if (e.Item.Equals(bbiGenQuestion))
             {
                 var generator = _examElementGeneratorFactory.GetExamElementGenerator();
                 var result = await generator.GenerateExamQuestionAsync(_currentExam.Title, _currentExam.Sections.First(s => s.Title == _currentSelctedSection));
-                dynamic question = JsonConvert.DeserializeObject<dynamic>(result);
+                Question question = JsonConvert.DeserializeObject<Question>(result);
                 OnSaveQuestion(this, question);
+            }
+            else if (e.Item.Equals(bbiDeleteQuestion))
+            {
+                _fileHelper.DeleteQuestion(_selectedLinkInfo);
             }
         }
     }

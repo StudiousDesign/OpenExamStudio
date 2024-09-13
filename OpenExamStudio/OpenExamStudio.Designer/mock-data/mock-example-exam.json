@@ -1,0 +1,149 @@
+{
+  "title": "Sample Exam with Various Question Types",
+  "description": "This exam includes multiple types of questions for demonstration purposes.",
+  "author": null,
+  "duration": 120,
+  "metadata": {
+    "createdBy": "Robert M Tonnessen",
+    "dateCreated": "2024-09-07T00:00:00"
+  },
+  "sections": [
+    {
+      "sectionId": 1,
+      "title": "General Knowledge",
+      "questions": [
+        {
+          "sectionId": 1,
+          "questionId": 1,
+          "correctAnswer": "Paris",
+          "title": "This is a multiple choice question UPDATED",
+          "text": "What is the capital of France? UPDATED",
+          "type": "multiple-choice",
+          "points": 3,
+          "allowedSelections": 3,
+          "answerOptions": [
+            {
+              "answerId": 1,
+              "displayText": "Paris",
+              "explanation": "Correct; paris is the capital of France.",
+              "isCorrect": true
+            },
+            {
+              "answerId": 2,
+              "displayText": "London",
+              "explanation": "Incorrect; London is the captial of Enagland not France.",
+              "isCorrect": false
+            },
+            {
+              "answerId": 3,
+              "displayText": "Berlin",
+              "explanation": "Incorrect; Berlin is the captial of Germany not France.",
+              "isCorrect": false
+            },
+            {
+              "answerId": 4,
+              "displayText": "Rome",
+              "explanation": "Incorrect; Rome is the captial of Italy not France.",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "sectionId": 1,
+          "questionId": 2,
+          "correctAnswer": null,
+          "title": null,
+          "text": "Explain the causes of World War I.",
+          "type": "essay",
+          "points": 30,
+          "allowedSelections": 0,
+          "answerOptions": null
+        },
+        {
+          "sectionId": 1,
+          "questionId": 3,
+          "correctAnswer": null,
+          "title": null,
+          "text": "The capital of Spain is ___",
+          "type": "fill-in-the-blank",
+          "points": 1,
+          "allowedSelections": 0,
+          "answerOptions": null
+        },
+        {
+          "sectionId": 1,
+          "questionId": 4,
+          "correctAnswer": null,
+          "title": null,
+          "text": "Match the country with its capital.",
+          "type": "matching",
+          "points": 3,
+          "allowedSelections": 0,
+          "answerOptions": null
+        },
+        {
+          "sectionId": 1,
+          "questionId": 5,
+          "correctAnswer": null,
+          "title": null,
+          "text": "Which of the following are prime numbers?",
+          "type": "multiple-select",
+          "points": 3,
+          "allowedSelections": 0,
+          "answerOptions": null
+        },
+        {
+          "sectionId": 1,
+          "questionId": 6,
+          "correctAnswer": null,
+          "title": null,
+          "text": "Arrange the planets in our solar system from closest to furthest from the Sun.",
+          "type": "ordering",
+          "points": 5,
+          "allowedSelections": 0,
+          "answerOptions": null
+        },
+        {
+          "sectionId": 1,
+          "questionId": 7,
+          "correctAnswer": null,
+          "title": null,
+          "text": "Click on the heart in the diagram below.",
+          "type": "hotspot",
+          "points": 2,
+          "allowedSelections": 0,
+          "answerOptions": null
+        },
+        {
+          "sectionId": 1,
+          "questionId": 8,
+          "correctAnswer": null,
+          "title": null,
+          "text": "Write a function to check if a number is a palindrome.",
+          "type": "coding",
+          "points": 10,
+          "allowedSelections": 0,
+          "answerOptions": null
+        },
+        {
+          "sectionId": 1,
+          "questionId": 9,
+          "correctAnswer": null,
+          "title": null,
+          "text": "Record your answer explaining the process of photosynthesis.",
+          "type": "audio-response",
+          "points": 5,
+          "allowedSelections": 0,
+          "answerOptions": null
+        }
+      ]
+    }
+  ],
+  "gradingSchema": {
+    "passingScore": 70
+  },
+  "settings": {
+    "shuffleQuestions": true,
+    "shuffleOptions": false
+  }
+}
