@@ -23,9 +23,9 @@ namespace OpenExamStudio.Designer
             _apiKey = apiKey;
         }
 
-        public async Task<string> GenerateExamAsync()
+        public async Task<string> GenerateExamAsync(ExamGenerationArgs args)
         {
-            var prompt = GetFullExamPrompt(sectionCount: 1, questionsPerSection: 2);
+            var prompt = GetFullExamPrompt(args.Title, sectionCount: args.SectionCount, questionsPerSection: args.QuestionPerSectionCount);
             return await GenerateChatCompletionAsync(prompt);
         }
 
@@ -88,9 +88,9 @@ namespace OpenExamStudio.Designer
             return sb.ToString();
         }
 
-        private string GetFullExamPrompt(int sectionCount, int questionsPerSection)
+        private string GetFullExamPrompt(string promptTitle, int sectionCount, int questionsPerSection)
         {
-            string completePrompt = $"strictly using the follwoing json as an example of the required result structure; {Environment.NewLine}{Environment.NewLine}{_fullExamPromptSchema} generate me a {sectionCount} section quiz on any topic you like. each section should have {questionsPerSection} questions in it and at least one of those questions in each section should be multipart and therfore have at least allowedSelections greater than 1..";
+            string completePrompt = $"strictly using the follwoing json as an example of the required result structure; {Environment.NewLine}{Environment.NewLine}{_fullExamPromptSchema} generate me a {sectionCount} section quiz based on the following; {promptTitle}. each section should have {questionsPerSection} questions in it and at least one of those questions in each section should be multipart and therfore have at least allowedSelections greater than 1.. Each question should have a minimum of four answer options; The author of this exam is {Environment.UserName}";
             return completePrompt;
         }
 

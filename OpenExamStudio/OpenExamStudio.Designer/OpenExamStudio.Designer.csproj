@@ -167,6 +167,13 @@
     <Compile Include="QuestionFactory.cs" />
     <Compile Include="QuestionUIGenerationArgs.cs" />
     <Compile Include="UIFactory.cs" />
+    <Compile Include="entities\ExamGenerationArgs.cs" />
+    <Compile Include="views\GenerateExamView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\GenerateExamView.Designer.cs">
+      <DependentUpon>GenerateExamView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Controls\MultipleChoiceControl.resx">
       <DependentUpon>MultipleChoiceControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +193,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="views\GenerateExamView.resx">
+      <DependentUpon>GenerateExamView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <Content Include="mock-data\general-azure-quiz.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

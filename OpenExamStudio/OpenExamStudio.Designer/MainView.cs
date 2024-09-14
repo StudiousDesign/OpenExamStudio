@@ -5,6 +5,7 @@ using DevExpress.XtraLayout.Utils;
 using DevExpress.XtraNavBar;
 using Newtonsoft.Json;
 using OpenExamStudio.Designer.Controls;
+using OpenExamStudio.Designer.views;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -72,10 +73,14 @@ namespace OpenExamStudio.Designer
         private async void btnGenerateExam_ItemClick(object sender, ItemClickEventArgs e)
         {
             ClearUI();
-            var generator = _examElementGeneratorFactory.GetExamElementGenerator();
-            var result = await generator.GenerateExamAsync();
-            Exam exam = JsonConvert.DeserializeObject<Exam>(result);
-            _fileHelper.SaveGeneratedExam(exam);
+            GenerateExamView generateExamView = new GenerateExamView();
+            if (generateExamView.ShowDialog() == DialogResult.OK)
+            {
+                var generator = _examElementGeneratorFactory.GetExamElementGenerator();
+                var result = await generator.GenerateExamAsync(generateExamView.ExamGenerationArgs);
+                Exam exam = JsonConvert.DeserializeObject<Exam>(result);
+                _fileHelper.SaveGeneratedExam(exam);
+            }
         }
 
         private void navBarControl1_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)

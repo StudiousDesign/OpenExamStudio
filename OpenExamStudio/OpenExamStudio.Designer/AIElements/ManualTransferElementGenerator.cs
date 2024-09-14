@@ -6,7 +6,7 @@ namespace OpenExamStudio.Designer
     public class ManualTransferElementGenerator : IExamElementGenerator
     {
 
-        public async Task<string> GenerateExamAsync()
+        public async Task<string> GenerateExamAsync(ExamGenerationArgs args)
         {
             return await Task.FromResult(_gptFullExamResponse);
         }

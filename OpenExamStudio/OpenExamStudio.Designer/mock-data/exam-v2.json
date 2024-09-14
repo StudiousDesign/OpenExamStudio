@@ -1,0 +1,239 @@
+{
+  "title": "General Azure Quiz",
+  "description": "This quiz tests your general knowledge of Azure services and concepts.",
+  "author": null,
+  "duration": 180,
+  "metadata": {
+    "createdBy": "Robert M Tonnessen",
+    "dateCreated": "2024-09-09T00:00:00"
+  },
+  "sections": [
+    {
+      "sectionId": 1,
+      "title": "Azure Compute",
+      "questions": [
+        "3c53b882-e6b5-42b3-9f22-8d414f3b7083",
+        "f973bbf1-b3f8-4c42-88b3-238fe2be9151"
+      ]
+    },
+    {
+      "sectionId": 2,
+      "title": "Azure Storage",
+      "questions": [
+        "d1f5b3e1-9c12-47a2-82f1-12b5f4c3e241",
+        "e3a4d2f1-91c3-4b2f-a413-2d5b1f2e3c4d"
+      ]
+    },
+    {
+      "sectionId": 3,
+      "title": "Azure Networking",
+      "questions": [
+        "f3b1c4d5-82a2-49d3-81e1-12f5c3e4b6d1",
+        "d2e3f4a5-9b1c-4c2a-81f2-12e4d5c6b3a4"
+      ]
+    }
+  ],
+  "questions": {
+    "pick-x": [
+      {
+        "questionId": "3c53b882-e6b5-42b3-9f22-8d414f3b7083",
+        "correctAnswer": "Azure Virtual Machines, Azure Functions",
+        "title": "Azure Compute Services",
+        "text": "Which of the following are Azure compute services?",
+        "type": "pick-x",
+        "points": 4,
+        "allowedSelections": 2,
+        "answerOptions": [
+          {
+            "answerId": "a7d4b9e3-5e3a-4a4b-9283-12d5c85f3b0c",
+            "displayText": "Azure Virtual Machines",
+            "isCorrect": true,
+            "explanation": "Correct; Azure Virtual Machines provide scalable compute resources."
+          },
+          {
+            "answerId": "da71e3b0-41e8-49e6-b1e3-11f5c285f85c",
+            "displayText": "Azure Functions",
+            "isCorrect": true,
+            "explanation": "Correct; Azure Functions is a serverless compute service."
+          },
+          {
+            "answerId": "51e1d8b4-88d3-452d-9951-e25d9f8f1345",
+            "displayText": "Azure Storage",
+            "isCorrect": false,
+            "explanation": "Incorrect; Azure Storage is used for storing data, not compute."
+          },
+          {
+            "answerId": "f8c4db76-6f82-423e-a484-89a35b9b9cfa",
+            "displayText": "Azure Content Delivery Network (CDN)",
+            "isCorrect": false,
+            "explanation": "Incorrect; Azure CDN is for content distribution, not compute."
+          }
+        ]
+      },
+      {
+        "questionId": "f973bbf1-b3f8-4c42-88b3-238fe2be9151",
+        "correctAnswer": "Virtual Machine Scale Sets",
+        "title": "Azure VM Management",
+        "text": "Which Azure service is designed for managing a group of load-balanced virtual machines?",
+        "type": "pick-x",
+        "points": 3,
+        "allowedSelections": 1,
+        "answerOptions": [
+          {
+            "answerId": "88f2b4c2-9c42-41b3-92d3-e1f4e8b2c5d3",
+            "displayText": "Virtual Machine Scale Sets",
+            "isCorrect": true,
+            "explanation": "Correct; VM Scale Sets manage a group of load-balanced VMs."
+          },
+          {
+            "answerId": "12d4e3a1-4c3b-456b-b512-d4b2e6a8c932",
+            "displayText": "Azure Batch",
+            "isCorrect": false,
+            "explanation": "Incorrect; Azure Batch is used for running large-scale parallel and high-performance computing applications."
+          },
+          {
+            "answerId": "b124e9c1-b4a4-423b-a252-d3b5e2c4f321",
+            "displayText": "Azure Blob Storage",
+            "isCorrect": false,
+            "explanation": "Incorrect; Azure Blob Storage is a service for storing large amounts of unstructured data."
+          }
+        ]
+      },
+      {
+        "questionId": "d1f5b3e1-9c12-47a2-82f1-12b5f4c3e241",
+        "correctAnswer": "Azure Blob Storage, Azure Table Storage",
+        "title": "Azure Storage Types",
+        "text": "Which of the following are types of Azure Storage services?",
+        "type": "pick-x",
+        "points": 4,
+        "allowedSelections": 2,
+        "answerOptions": [
+          {
+            "answerId": "d3c8e4f1-9a21-48b5-b412-e5b3c5e2b2a1",
+            "displayText": "Azure Blob Storage",
+            "isCorrect": true,
+            "explanation": "Correct; Azure Blob Storage is used for storing unstructured data."
+          },
+          {
+            "answerId": "f2a3d9b3-82e1-40d3-8e24-d3b4e2c5f1b3",
+            "displayText": "Azure Table Storage",
+            "isCorrect": true,
+            "explanation": "Correct; Azure Table Storage is a NoSQL store for schemaless storage."
+          },
+          {
+            "answerId": "a9f8b7c6-4b3e-4b12-82d3-c5e2f4b3d1e3",
+            "displayText": "Azure Event Hubs",
+            "isCorrect": false,
+            "explanation": "Incorrect; Azure Event Hubs is a data streaming service."
+          },
+          {
+            "answerId": "f4c2d9b2-e123-4b34-8b23-d2c3e5a6f3b2",
+            "displayText": "Azure Kubernetes Service (AKS)",
+            "isCorrect": false,
+            "explanation": "Incorrect; AKS is used for deploying and managing containerized applications."
+          }
+        ]
+      },
+      {
+        "questionId": "e3a4d2f1-91c3-4b2f-a413-2d5b1f2e3c4d",
+        "correctAnswer": "Hot, Cool, Archive",
+        "title": "Azure Blob Storage Access Tiers",
+        "text": "What are the three access tiers available in Azure Blob Storage?",
+        "type": "pick-x",
+        "points": 3,
+        "allowedSelections": 1,
+        "answerOptions": [
+          {
+            "answerId": "c1e3b2a4-d5b4-421c-a1b3-4e5d6f2a3c4b",
+            "displayText": "Hot, Cool, Archive",
+            "isCorrect": true,
+            "explanation": "Correct; these are the three access tiers of Azure Blob Storage."
+          },
+          {
+            "answerId": "b2e1c3a4-f4d2-4b3c-82d5-a1c2d5e3f4b2",
+            "displayText": "Standard, Premium, Ultra",
+            "isCorrect": false,
+            "explanation": "Incorrect; these are performance tiers, not access tiers."
+          },
+          {
+            "answerId": "a3b4c5d6-e2f1-4b1a-83c2-d4e5f6a1b2c3",
+            "displayText": "Public, Private, Hybrid",
+            "isCorrect": false,
+            "explanation": "Incorrect; these terms refer to cloud deployment models."
+          }
+        ]
+      },
+      {
+        "questionId": "f3b1c4d5-82a2-49d3-81e1-12f5c3e4b6d1",
+        "correctAnswer": "Virtual Network (VNet), Network Security Groups (NSG)",
+        "title": "Azure Networking Components",
+        "text": "Which of the following are components used for Azure network security and segmentation?",
+        "type": "pick-x",
+        "points": 4,
+        "allowedSelections": 2,
+        "answerOptions": [
+          {
+            "answerId": "c4b5a1d3-4e2f-42b3-a1c2-5d6f4e3b2c1a",
+            "displayText": "Virtual Network (VNet)",
+            "isCorrect": true,
+            "explanation": "Correct; VNets are used for network segmentation in Azure."
+          },
+          {
+            "answerId": "d3a4f5b2-1e2c-48b3-b1c2-a4e5d6f7b2c3",
+            "displayText": "Azure DNS",
+            "isCorrect": false,
+            "explanation": "Incorrect; Azure DNS is used for domain name resolution, not direct network segmentation."
+          },
+          {
+            "answerId": "b4d1c5e2-7a6b-43c1-a2e3-4f5b6d7e2f1a",
+            "displayText": "Network Security Groups (NSG)",
+            "isCorrect": true,
+            "explanation": "Correct; NSGs are used to control inbound and outbound traffic to network interfaces."
+          },
+          {
+            "answerId": "c3d4e2f1-a1b2-4b5c-9f3a-6e4d5f7b8c9a",
+            "displayText": "Azure Logic Apps",
+            "isCorrect": false,
+            "explanation": "Incorrect; Logic Apps are for workflow automation, not networking."
+          }
+        ]
+      },
+      {
+        "questionId": "d2e3f4a5-9b1c-4c2a-81f2-12e4d5c6b3a4",
+        "correctAnswer": "Azure Load Balancer",
+        "title": "Azure Load Balancing",
+        "text": "Which Azure service is used to distribute incoming network traffic across multiple virtual machines?",
+        "type": "pick-x",
+        "points": 3,
+        "allowedSelections": 1,
+        "answerOptions": [
+          {
+            "answerId": "e4c3a2f1-d5b6-42b3-91f2-4a5d3c4b2e6a",
+            "displayText": "Azure Load Balancer",
+            "isCorrect": true,
+            "explanation": "Correct; Azure Load Balancer distributes incoming network traffic across multiple targets."
+          },
+          {
+            "answerId": "d4e2a1b5-9c3d-42b4-81f2-b6a5d4e3c1b2",
+            "displayText": "Azure Traffic Manager",
+            "isCorrect": false,
+            "explanation": "Incorrect; Traffic Manager uses DNS to direct client requests to the most appropriate endpoint."
+          },
+          {
+            "answerId": "a3c1b4d5-e2f4-4b5c-91e2-c3a4b5d6f2e3",
+            "displayText": "Azure Firewall",
+            "isCorrect": false,
+            "explanation": "Incorrect; Azure Firewall provides centralized network security policy enforcement."
+          }
+        ]
+      }
+    ]
+  },
+  "gradingSchema": {
+    "passingScore": 70
+  },
+  "settings": {
+    "shuffleQuestions": true,
+    "shuffleOptions": false
+  }
+}
