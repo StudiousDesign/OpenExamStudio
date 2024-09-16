@@ -77,7 +77,42 @@
               "isCorrect": false
             }
           ]
+        },
+        {
+          "sectionId": 1,
+          "questionId": 3,
+          "title": "Order of Azure Service Deployment",
+          "text": "Arrange the following Azure services in the order typically deployed in a new project:",
+          "type": "order-by",
+          "points": 5,
+          "answerOptions": [
+            {
+              "answerId": 1,
+              "displayText": "Azure Functions",
+              "orderPosition": 4,
+              "explanation": "Azure Functions are typically added last in this sequence, as they are serverless and often rely on other infrastructure to trigger and manage their execution."
+            },
+            {
+              "answerId": 2,
+              "displayText": "Azure Virtual Machines",
+              "orderPosition": 2,
+              "explanation": "Azure Virtual Machines are usually set up early in the project to provide the fundamental compute infrastructure necessary for running applications."
+            },
+            {
+              "answerId": 3,
+              "displayText": "Azure Kubernetes Service (AKS)",
+              "orderPosition": 3,
+              "explanation": "Following VMs, Azure Kubernetes Service is deployed to manage containerized applications, allowing for easier scaling and management of these containers."
+            },
+            {
+              "answerId": 4,
+              "displayText": "Azure Active Directory",
+              "orderPosition": 1,
+              "explanation": "Azure Active Directory is typically deployed first as it is essential for establishing secure access and identity management across all other Azure services."
+            }
+          ]
         }
+        
       ]
     },
     {

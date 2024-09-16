@@ -23,6 +23,15 @@ namespace OpenExamStudio.Designer
                         generationArgs.Question.Title,
                         generationArgs.Question.AllowedSelections
                     );
+                case "order-by":
+                    return new OrderByQuestion(
+                        generationArgs.SectionId,
+                        generationArgs.QuestionId,
+                        generationArgs.Question.Text,
+                        generationArgs.Question.Points,
+                        JsonConvert.DeserializeObject<List<OrderByAnswerOption>>(JsonConvert.SerializeObject(generationArgs.Question.AnswerOptions)),
+                        generationArgs.Question.Title
+                    );
                 // Handle other cases similarly...
                 default:
                     throw new InvalidOperationException($"Unknown question type: {type}");

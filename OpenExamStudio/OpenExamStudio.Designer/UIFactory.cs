@@ -15,6 +15,8 @@ namespace OpenExamStudio.Designer
             {
                 case "multiple-choice":
                     return new MultipleChoiceControl(args);
+                case "order-by":
+                    return new OrderByControl(args);
                 default:
                     throw new InvalidOperationException($"Unknown question type: {type}");
             }

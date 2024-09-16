@@ -29,5 +29,15 @@ namespace OpenExamStudio.Designer
             CorrectAnswer = correctAnswer;
             AllowedSelections = allowedSelections;
         }
+
+        protected Question(int sectionId, int questionId, string text, int points, string type, string title)
+        {
+            SectionId = sectionId;
+            QuestionId = questionId;
+            Text = text;
+            Points = points;
+            Type = type;
+            Title = title;
+        }
     }
 }
