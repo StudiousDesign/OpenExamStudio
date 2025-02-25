@@ -46,6 +46,7 @@
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.pnlQuestion = new DevExpress.XtraEditors.PanelControl();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.spinEditExamDuration = new DevExpress.XtraEditors.SpinEdit();
             this.txtExamTitle = new DevExpress.XtraEditors.TextEdit();
             this.txtExamDescription = new DevExpress.XtraEditors.TextEdit();
@@ -73,11 +74,17 @@
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::OpenExamStudio.Designer.WaitForm1), true, true, true);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlQuestion)).BeginInit();
+            this.pnlQuestion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditExamDuration.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExamTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExamDescription.Properties)).BeginInit();
@@ -170,15 +177,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1918, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(1534, 39);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1046);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 830);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1918, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1534, 0);
             // 
             // barDockControlLeft
             // 
@@ -186,15 +193,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1007);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 791);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1918, 39);
+            this.barDockControlRight.Location = new System.Drawing.Point(1534, 39);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 1007);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 791);
             // 
             // bbiGenQuestion
             // 
@@ -237,16 +244,32 @@
             this.layoutControl1.Location = new System.Drawing.Point(243, 39);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1475, 1007);
+            this.layoutControl1.Size = new System.Drawing.Size(1291, 791);
             this.layoutControl1.TabIndex = 7;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // pnlQuestion
             // 
+            this.pnlQuestion.Controls.Add(this.splitContainerControl1);
             this.pnlQuestion.Location = new System.Drawing.Point(16, 103);
             this.pnlQuestion.Name = "pnlQuestion";
-            this.pnlQuestion.Size = new System.Drawing.Size(1443, 888);
+            this.pnlQuestion.Size = new System.Drawing.Size(1259, 672);
             this.pnlQuestion.TabIndex = 8;
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Location = new System.Drawing.Point(661, 283);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            // 
+            // splitContainerControl1.Panel1
+            // 
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            // 
+            // splitContainerControl1.Panel2
+            // 
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(200, 100);
+            this.splitContainerControl1.TabIndex = 0;
             // 
             // spinEditExamDuration
             // 
@@ -255,7 +278,7 @@
             0,
             0,
             0});
-            this.spinEditExamDuration.Location = new System.Drawing.Point(1378, 53);
+            this.spinEditExamDuration.Location = new System.Drawing.Point(1194, 53);
             this.spinEditExamDuration.MenuManager = this.barManager1;
             this.spinEditExamDuration.Name = "spinEditExamDuration";
             this.spinEditExamDuration.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -269,13 +292,13 @@
             this.txtExamTitle.Location = new System.Drawing.Point(134, 53);
             this.txtExamTitle.MenuManager = this.barManager1;
             this.txtExamTitle.Name = "txtExamTitle";
-            this.txtExamTitle.Size = new System.Drawing.Size(274, 28);
+            this.txtExamTitle.Size = new System.Drawing.Size(75, 28);
             this.txtExamTitle.StyleController = this.layoutControl1;
             this.txtExamTitle.TabIndex = 6;
             // 
             // txtExamDescription
             // 
-            this.txtExamDescription.Location = new System.Drawing.Point(516, 53);
+            this.txtExamDescription.Location = new System.Drawing.Point(317, 53);
             this.txtExamDescription.MenuManager = this.barManager1;
             this.txtExamDescription.Name = "txtExamDescription";
             this.txtExamDescription.Size = new System.Drawing.Size(466, 28);
@@ -284,10 +307,10 @@
             // 
             // txtExamAuthor
             // 
-            this.txtExamAuthor.Location = new System.Drawing.Point(1090, 53);
+            this.txtExamAuthor.Location = new System.Drawing.Point(891, 53);
             this.txtExamAuthor.MenuManager = this.barManager1;
             this.txtExamAuthor.Name = "txtExamAuthor";
-            this.txtExamAuthor.Size = new System.Drawing.Size(180, 28);
+            this.txtExamAuthor.Size = new System.Drawing.Size(195, 28);
             this.txtExamAuthor.StyleController = this.layoutControl1;
             this.txtExamAuthor.TabIndex = 4;
             // 
@@ -299,7 +322,7 @@
             this.lciExamMetadata,
             this.layoutControlItem1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1475, 1007);
+            this.Root.Size = new System.Drawing.Size(1291, 791);
             this.Root.TextVisible = false;
             // 
             // lciExamMetadata
@@ -312,7 +335,7 @@
             this.lciExamDuration});
             this.lciExamMetadata.Location = new System.Drawing.Point(0, 0);
             this.lciExamMetadata.Name = "lciExamMetadata";
-            this.lciExamMetadata.Size = new System.Drawing.Size(1449, 87);
+            this.lciExamMetadata.Size = new System.Drawing.Size(1265, 87);
             this.lciExamMetadata.Text = "Exam Metadata";
             this.lciExamMetadata.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
@@ -321,14 +344,14 @@
             this.lciExamTitle.Control = this.txtExamTitle;
             this.lciExamTitle.Location = new System.Drawing.Point(0, 0);
             this.lciExamTitle.Name = "lciExamTitle";
-            this.lciExamTitle.Size = new System.Drawing.Size(382, 34);
+            this.lciExamTitle.Size = new System.Drawing.Size(183, 34);
             this.lciExamTitle.Text = "Exam Title:";
             this.lciExamTitle.TextSize = new System.Drawing.Size(86, 13);
             // 
             // lciExamDescription
             // 
             this.lciExamDescription.Control = this.txtExamDescription;
-            this.lciExamDescription.Location = new System.Drawing.Point(382, 0);
+            this.lciExamDescription.Location = new System.Drawing.Point(183, 0);
             this.lciExamDescription.MaxSize = new System.Drawing.Size(574, 34);
             this.lciExamDescription.MinSize = new System.Drawing.Size(574, 34);
             this.lciExamDescription.Name = "lciExamDescription";
@@ -340,16 +363,16 @@
             // lciExamAuthor
             // 
             this.lciExamAuthor.Control = this.txtExamAuthor;
-            this.lciExamAuthor.Location = new System.Drawing.Point(956, 0);
+            this.lciExamAuthor.Location = new System.Drawing.Point(757, 0);
             this.lciExamAuthor.Name = "lciExamAuthor";
-            this.lciExamAuthor.Size = new System.Drawing.Size(288, 34);
+            this.lciExamAuthor.Size = new System.Drawing.Size(303, 34);
             this.lciExamAuthor.Text = "Exam Author:";
             this.lciExamAuthor.TextSize = new System.Drawing.Size(86, 13);
             // 
             // lciExamDuration
             // 
             this.lciExamDuration.Control = this.spinEditExamDuration;
-            this.lciExamDuration.Location = new System.Drawing.Point(1244, 0);
+            this.lciExamDuration.Location = new System.Drawing.Point(1060, 0);
             this.lciExamDuration.MaxSize = new System.Drawing.Size(173, 34);
             this.lciExamDuration.MinSize = new System.Drawing.Size(173, 34);
             this.lciExamDuration.Name = "lciExamDuration";
@@ -364,7 +387,7 @@
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 87);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(7, 7);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1449, 894);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1265, 678);
             this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
@@ -373,10 +396,10 @@
             // 
             this.dockManager1.Form = this;
             this.dockManager1.HiddenPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dockPanel1});
-            this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dockPanelNavigation,
+            this.dockPanel1,
             this.dockPanelToolbox});
+            this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
+            this.dockPanelNavigation});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -423,7 +446,7 @@
             this.dockPanelNavigation.Location = new System.Drawing.Point(0, 39);
             this.dockPanelNavigation.Name = "dockPanelNavigation";
             this.dockPanelNavigation.OriginalSize = new System.Drawing.Size(243, 200);
-            this.dockPanelNavigation.Size = new System.Drawing.Size(243, 1007);
+            this.dockPanelNavigation.Size = new System.Drawing.Size(243, 791);
             this.dockPanelNavigation.Text = "Exam Navigation";
             // 
             // dockPanel2_Container
@@ -431,7 +454,7 @@
             this.dockPanel2_Container.Controls.Add(this.navBarControl1);
             this.dockPanel2_Container.Location = new System.Drawing.Point(3, 38);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(236, 966);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(236, 750);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // navBarControl1
@@ -440,7 +463,7 @@
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 236;
-            this.navBarControl1.Size = new System.Drawing.Size(236, 966);
+            this.navBarControl1.Size = new System.Drawing.Size(236, 750);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkClicked);
             this.navBarControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.navBarControl1_MouseUp);
@@ -450,17 +473,20 @@
             this.dockPanelToolbox.Controls.Add(this.dockPanel3_Container);
             this.dockPanelToolbox.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.dockPanelToolbox.ID = new System.Guid("ff58edfa-5c7f-40bc-ad61-231dbe20972c");
-            this.dockPanelToolbox.Location = new System.Drawing.Point(1718, 39);
+            this.dockPanelToolbox.Location = new System.Drawing.Point(1334, 39);
             this.dockPanelToolbox.Name = "dockPanelToolbox";
             this.dockPanelToolbox.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanelToolbox.Size = new System.Drawing.Size(200, 1007);
+            this.dockPanelToolbox.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.dockPanelToolbox.SavedIndex = 1;
+            this.dockPanelToolbox.Size = new System.Drawing.Size(200, 791);
             this.dockPanelToolbox.Text = "Toolbox";
+            this.dockPanelToolbox.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
             // 
             // dockPanel3_Container
             // 
             this.dockPanel3_Container.Location = new System.Drawing.Point(4, 38);
             this.dockPanel3_Container.Name = "dockPanel3_Container";
-            this.dockPanel3_Container.Size = new System.Drawing.Size(193, 966);
+            this.dockPanel3_Container.Size = new System.Drawing.Size(193, 750);
             this.dockPanel3_Container.TabIndex = 0;
             // 
             // workspaceManager1
@@ -495,13 +521,16 @@
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1918, 1046);
+            this.ClientSize = new System.Drawing.Size(1534, 830);
             this.Controls.Add(this.layoutControl1);
-            this.Controls.Add(this.dockPanelToolbox);
             this.Controls.Add(this.dockPanelNavigation);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -515,6 +544,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlQuestion)).EndInit();
+            this.pnlQuestion.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spinEditExamDuration.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExamTitle.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExamDescription.Properties)).EndInit();
@@ -588,5 +622,7 @@
         private DevExpress.XtraBars.BarButtonItem bbiGenQuestion;
         private DevExpress.XtraBars.BarButtonItem bbiGenSection;
         private DevExpress.XtraBars.BarButtonItem bbiDeleteQuestion;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

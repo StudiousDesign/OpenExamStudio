@@ -6,6 +6,7 @@ using DevExpress.XtraNavBar;
 using Newtonsoft.Json;
 using OpenExamStudio.Designer.Controls;
 using OpenExamStudio.Designer.views;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -76,10 +77,22 @@ namespace OpenExamStudio.Designer
             GenerateExamView generateExamView = new GenerateExamView();
             if (generateExamView.ShowDialog() == DialogResult.OK)
             {
-                var generator = _examElementGeneratorFactory.GetExamElementGenerator();
-                var result = await generator.GenerateExamAsync(generateExamView.ExamGenerationArgs);
-                Exam exam = JsonConvert.DeserializeObject<Exam>(result);
-                _fileHelper.SaveGeneratedExam(exam);
+                try
+                {
+                    splashScreenManager1.ShowWaitForm();
+
+                    var generator = _examElementGeneratorFactory.GetExamElementGenerator();
+                    var result = await generator.GenerateExamAsync(generateExamView.ExamGenerationArgs);
+
+                    Exam exam = JsonConvert.DeserializeObject<Exam>(result);
+                    splashScreenManager1.CloseWaitForm();
+                    _fileHelper.SaveGeneratedExam(exam);
+                }
+                catch (Exception ex)
+                {
+                    splashScreenManager1.CloseWaitForm();
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
